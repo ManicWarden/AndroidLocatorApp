@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile_Locator_App.Xaml.LogInPage">
+    <ContentPage.Content>
+
+        <StackLayout x:Name="MasterLayout">
+            <!--The overall container-->
+
+            <StackLayout x:Name="LogoStack" VerticalOptions="FillAndExpand">
+                <!--For the Logo-->
+                <Image x:Name="LogInIcon" Source="LogInIcon.png" Margin="0,80,0,0"/>
+            </StackLayout>
+
+            <StackLayout x:Name="LogInSection" VerticalOptions="StartAndExpand">
+                <!--Log In Section where the user will enter their details-->
+                <StackLayout.Padding>
+
+                    <OnIdiom x:TypeArguments="Thickness">
+                        <!--OnIdiom allows for different padding specifications depending on tablet or mobile phone -->
+                        <OnIdiom.Phone>
+                            40,0,40,0
+                            <!-- Left, Top, Right, Bottom, IPhones require a top padding of at least 20 or the form will be covered by IPhones default top bar -->
+                        </OnIdiom.Phone>
+                        <OnIdiom.Tablet>
+                            140,150,140,0
+                        </OnIdiom.Tablet>
+                    </OnIdiom>
+
+                </StackLayout.Padding>
+
+                <ActivityIndicator x:Name="ActivitySpinner" Color="Red" IsRunning="True" />
+                <Label x:Name="Label_Username" Text="Username" />
+                <Entry x:Name="Entry_Username" Placeholder="Username" />
+                <Label x:Name="Label_Password" Text="Password"/>
+                <Entry x:Name="Entry_Password" Placeholder="Password"/>
+                <Button x:Name="Button_LogIn"  Text="Log In" Clicked="UserLogIn"/>
+                <Button x:Name="Button_Register" Text="Create Account" Clicked="UserRegister"/>
+                <Button x:Name="Button_Exit"  Text="Exit" Clicked="ExitApplication"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

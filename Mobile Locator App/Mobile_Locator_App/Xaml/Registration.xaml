@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile_Locator_App.Xaml.Registration">
+    <ContentPage.Content>
+        <ScrollView >
+            <StackLayout x:Name="MasterLayout">
+                <!--The overall container-->
+
+                <StackLayout x:Name="LogoStack" VerticalOptions="FillAndExpand">
+                    <!--For the Logo-->
+                    <Image x:Name="LogInIcon" Source="LogInIcon.png" Margin="0,80,0,0"/>
+                </StackLayout>
+
+                <StackLayout x:Name="LogInSection" VerticalOptions="StartAndExpand">
+                    <!--Log In Section where the user will enter their details-->
+                    <StackLayout.Padding>
+
+                        <OnIdiom x:TypeArguments="Thickness">
+                            <!--OnIdiom allows for different padding specifications depending on tablet or mobile phone -->
+                            <OnIdiom.Phone>
+                                40,0,40,0
+                                <!-- Left, Top, Right, Bottom, IPhones require a top padding of at least 20 or the form will be covered by IPhones default top bar -->
+                            </OnIdiom.Phone>
+                            <OnIdiom.Tablet>
+                                140,150,140,0
+                            </OnIdiom.Tablet>
+                        </OnIdiom>
+
+                    </StackLayout.Padding>
+
+                    <ActivityIndicator x:Name="ActivitySpinner" Color="Red" IsRunning="True" />
+
+                    <Label x:Name="Label_Username" Text="Username" />
+                    <Entry x:Name="Entry_Username" Placeholder="Username" Text="Username"/>
+
+                    <Label x:Name="Label_Password" Text="Password"/>
+                    <Entry x:Name="Entry_Password" Placeholder="Password" Text="Password"/>
+
+                    <Label x:Name="Label_Forename" Text="Forename"/>
+                    <Entry x:Name="Entry_Forename" Placeholder="Percy" Text="Percy"/>
+
+                    <Label x:Name="Label_Surname" Text="Surname"/>
+                    <Entry x:Name="Entry_Surname" Placeholder="McPerson" Text="McPerson"/>
+
+                    <Label x:Name="Label_Email" Text="Email"/>
+                    <Entry x:Name="Entry_Email" Placeholder="McPerson.P@gmail.com" Text="McPerson.P@gmail.com"/>
+
+                    <Label x:Name="Label_PhoneNo" Text="Phone Number"/>
+                    <Entry x:Name="Entry_PhoneNo" Placeholder="0123 456 7890" Text="012345678910"/>
+
+                    <Button x:Name="Button_CreateAccount"  Text="Create Account" Clicked="ValidateRegistration"/>
+                    <Button x:Name="Button_BackToLogIn"  Text="Back" Clicked="ToLogInPage"/>
+                    <Button x:Name="Button_Exit"  Text="Exit" Clicked="ExitApplication"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

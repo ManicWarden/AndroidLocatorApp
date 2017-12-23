@@ -1,0 +1,10 @@
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Android.csprojResolveAssemblyReference.cache
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.MainPage.xaml.g.cs
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.App.xaml.g.cs
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.AddFriendsPage.xaml.g.cs
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.FriendsPage.xaml.g.cs
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.HomePage.xaml.g.cs
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.LocatorPage.xaml.g.cs
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.LogInPage.xaml.g.cs
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.Registration.xaml.g.cs
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.SettingsPage.xaml.g.cs
