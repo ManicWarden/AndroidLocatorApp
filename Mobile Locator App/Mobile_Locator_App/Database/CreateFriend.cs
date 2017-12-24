@@ -5,17 +5,17 @@ using System.Text;
 
 namespace Mobile_Locator_App.Database
 {
-    class GetUser : UntypedActor
+    class CreateFriend : UntypedActor
     {
         public const string StartCommand = "start";
         public const string ExitCommand = "exit";
-        private readonly IActorRef _getUserActor;
+        private readonly IActorRef _createFriendActor;
         private readonly string _username;
         private readonly string _password;
 
-        public GetUser(IActorRef getUserActor, string username)
+        public CreateFriend(IActorRef createFriendActor, string username)
         {
-            _getUserActor = getUserActor;
+            _createFriendActor = createFriendActor;
             _username = username;
             
         }
@@ -29,5 +29,4 @@ namespace Mobile_Locator_App.Database
 
         }
     }
-
 }
