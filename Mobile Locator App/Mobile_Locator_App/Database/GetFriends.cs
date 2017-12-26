@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Mobile_Locator_App.Database
 {
+    // retrieve the list of currentUserIDFriends from redis server
     class GetFriends : UntypedActor
     {
         public const string StartCommand = "start";
@@ -24,6 +25,7 @@ namespace Mobile_Locator_App.Database
             if (message.Equals(StartCommand))
             {
                 // method call
+                
             }
 
         }

@@ -9,7 +9,7 @@ namespace Mobile_Locator_App.Code
         public int ID { get; set; } // to get the user ID
         public static string Username { get; set; } // a unique string, static so that it can be called throughout the app
         public static string Password { get; set; } // a unique string, static so that it can be called throughout the app
-        public static int UserID { get; set; }
+        //public static int UserID { get; set; }
 
         public User() { } // for database manipulation later
         public User(string username, string password) // creates an instance of the user using the relevant username and password
@@ -17,7 +17,7 @@ namespace Mobile_Locator_App.Code
             Username = username;
             Password = password;
 
-            UserID = Database.DatabaseActions.GetUserID(); // sets UserID to the currents users UserID inside the Users Database dependant on the current username
+            //UserID = Database.DatabaseActions.GetUserID(); // sets UserID to the currents users UserID inside the Users Database dependant on the current username
                                                            //this.Username = Username;
                                                            // this.Password = Password;
         }

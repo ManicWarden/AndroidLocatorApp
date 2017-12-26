@@ -8,11 +8,23 @@ using Mobile_Locator_App.Database;
 namespace Mobile_Locator_App.Code
 {
     #region ActorPrimus
-    class ActorPrimus
+    public class ActorPrimus
     {
         public static ActorSystem MainActorSystem;
+        public static IActorRef DBSupervisorActor;
+        /// <summary>
+        /// Initialise some of the actors that will be used in the system and create references to said actors
+        /// </summary>
+         public static void Initialise()
+        {
+            MainActorSystem = ActorSystem.Create("MainActorSystem");
 
-        static void Main(string[] args)
+
+            Props dbSupervisorProps = Props.Create<DBSupervisor>();
+            DBSupervisorActor = MainActorSystem.ActorOf(dbSupervisorProps, "DBSupervisorActor");
+
+        }
+        /*static void Main(string[] args)
         {
             // Intialise the Actor System
             MainActorSystem = ActorSystem.Create("MainActorSystem");
@@ -37,7 +49,7 @@ namespace Mobile_Locator_App.Code
 
             // blocks the main thread from shutting down until the appropriate command is received
             MainActorSystem.WhenTerminated.Wait(); // always keep it as the last line of code in Main, anything below will not run
-        }
+        }*/
     }
     #endregion
 }

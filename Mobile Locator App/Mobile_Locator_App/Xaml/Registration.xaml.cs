@@ -8,16 +8,28 @@ using Mobile_Locator_App.Database;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Text.RegularExpressions;
+using Akka.Actor;
 
 namespace Mobile_Locator_App.Xaml
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Registration : ContentPage
 	{
+
+        //private readonly IActorRef _createUserActor;
+        private readonly IActorRef dbSupervisor;
+        private readonly IActorRef createUserActor;
         public Registration()
         {
             InitializeComponent();
+            
             InitializePageDesign();
+            
+            ActorPrimus.Initialise();
+
+            Props createUserProps = Props.Create<CreateUser>();
+            createUserActor = ActorPrimus.MainActorSystem.ActorOf(createUserProps, "createUserActor");
+
         }
 
         void InitializePageDesign() // to set the elements on the Log in page to the colours set in the Constants Class
@@ -62,13 +74,14 @@ namespace Mobile_Locator_App.Xaml
                     DisplayAlert("Username", "Please ensure that the username does not contain any spaces.", "OK");
                     return;
                 }
-                if (!DatabaseActions.CheckUsername(Entry_Username.Text))
+                if(CheckUsernameActor.checkUsername(Entry_Username.Text))
                 {
-                    // if the username is already being used
                     DisplayAlert("Username", "That username is already in use, please enter another.", "OK");
                     return;
                 }
-                else if (Entry_Password.Text.Length < 8 || Entry_Password.Text.Contains(" ")) // To ensure the password is of appropriate length
+
+           
+                if (Entry_Password.Text.Length < 8 || Entry_Password.Text.Contains(" ")) // To ensure the password is of appropriate length
                 {
                     DisplayAlert("Password", "Password should be at least 8 characters long and doesn't contain any spaces.", "OK");
                     return;
@@ -100,7 +113,12 @@ namespace Mobile_Locator_App.Xaml
 
                 else
                 {
-                    DatabaseActions.CreateUser(Entry_Username.Text, Entry_Password.Text, Entry_Forename.Text, Entry_Surname.Text, Entry_Email.Text, Entry_PhoneNo.Text);
+
+                    // if the username does not exist in the database then call the CreateUser Actor
+
+                    ActorPrimus.DBSupervisorActor.Tell(new DBSupervisor.CreateUserCommand(Entry_Username.Text, Entry_Password.Text, createUserActor));
+                    
+                    //DatabaseActions.CreateUser(Entry_Username.Text, Entry_Password.Text, Entry_Forename.Text, Entry_Surname.Text, Entry_Email.Text, Entry_PhoneNo.Text);
                     //string username, string password, string forename, string surname, string email, string phoneNumber
                     DisplayAlert("Registration Complete", "Registration Complete, Enjoy.", "OK");
                     // move user to the home page
@@ -192,7 +210,7 @@ namespace Mobile_Locator_App.Xaml
         void ToLogInPage(object sender, EventArgs e)
         {
             // close this page and open the Log in page, though not necessarily in that order
-            Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.LogInPage());
+            Navigation.PushModalAsync(new LogInPage());
         }
 
         void ExitApplication(object sender, EventArgs e)

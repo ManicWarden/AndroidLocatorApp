@@ -5,6 +5,8 @@ using System.Text;
 
 namespace Mobile_Locator_App.Database
 {
+    // use the RPush redis command to add a friend ID onto the list of 
+    // currentUserIDFriends
     class CreateFriend : UntypedActor
     {
         public const string StartCommand = "start";
@@ -12,6 +14,8 @@ namespace Mobile_Locator_App.Database
         private readonly IActorRef _createFriendActor;
         private readonly string _username;
         private readonly string _password;
+
+
 
         public CreateFriend(IActorRef createFriendActor, string username)
         {

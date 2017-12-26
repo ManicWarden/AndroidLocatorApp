@@ -6,10 +6,10 @@ using StackExchange.Redis;
 
 namespace Mobile_Locator_App.Database
 {
-    class DBSupervisor : UntypedActor
+    public class DBSupervisor : UntypedActor
     {
 
-
+        #region ActorAgents
         /// <summary>
         /// Actor that supervises the actors that manipulate the database
         /// will receive commands and send passed data to the relevant actors
@@ -24,10 +24,36 @@ namespace Mobile_Locator_App.Database
         private readonly IActorRef _getFriends;
         private readonly IActorRef _getUser;
 
+        #endregion
+
+        #region DBServer Variables
+        /// <summary>
+        /// These variables control access to the server on which the database
+        /// resides and will be intialised as soon as a user attempts to log in, register
+        /// or otherwise accesses the application.
+        /// The variables are disposable but will be maintained for as long as
+        /// the program is running as it allows for connection to the server 
+        /// throughout the runtime of the application. 
+        /// </summary>
+        /// 
+        private static ConnectionMultiplexer redis = ConnectionMultiplexer.Connect("redis-15181.c6.eu-west-1-1.ec2.cloud.redislabs.com:15181");
+        public static IDatabase RedisDB = redis.GetDatabase();
+
+
+        //public static IServer RedisServer = redis.GetServer("redis-15181.c6.eu-west-1-1.ec2.cloud.redislabs.com:15181");
+
+        #endregion
+
+        #region Commands
+
         public class CreateUserCommand
         {
+            
             public CreateUserCommand(string userName, string password, IActorRef createUserActor)
             {
+                
+                string value = userName;
+                RedisDB.StringSet(userName, password); // sets the key to the unique username and the value to the password
                 Username = userName;
                 CreateUserActor = createUserActor;
                 Password = password;
@@ -39,6 +65,7 @@ namespace Mobile_Locator_App.Database
             public IActorRef CreateUserActor { get; private set; }
 
         }
+
 
         public class CreateFriendCommand
         {
@@ -84,6 +111,8 @@ namespace Mobile_Locator_App.Database
 
         }
 
+        #endregion
+
         protected override void OnReceive(object message)
         {
             // creating a parent/child relationship between the created 
@@ -91,6 +120,7 @@ namespace Mobile_Locator_App.Database
 
             if (message is CreateUserCommand)
             {
+                Console.Write("*****************************************CreateUserCommand triggered");
                 var msg = message as CreateUserCommand;
                 
                 Context.ActorOf(Props.Create(

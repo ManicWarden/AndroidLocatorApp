@@ -5,6 +5,8 @@ using System.Text;
 
 namespace Mobile_Locator_App.Database
 {
+    // use HMGET to retrieve user data based on the unique id
+    // username
     class GetUser : UntypedActor
     {
         public const string StartCommand = "start";

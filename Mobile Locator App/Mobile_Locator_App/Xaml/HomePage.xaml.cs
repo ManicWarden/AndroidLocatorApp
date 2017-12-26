@@ -29,7 +29,7 @@ namespace Mobile_Locator_App.Xaml
         {
 
             //Find way to make username a public constant when the user has signed in or registered
-            DatabaseActions.GetFriends();
+            //DatabaseActions.GetFriends();
             // a list will be returned containing the usernames of the friends, and maybe the first and second names in different lists
             // assign said list/s to the listview FriendListView
         }
