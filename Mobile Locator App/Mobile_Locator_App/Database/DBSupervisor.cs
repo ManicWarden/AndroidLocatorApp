@@ -117,10 +117,10 @@ namespace Mobile_Locator_App.Database
         {
             // creating a parent/child relationship between the created 
             // Actor instance and the DBSupervisor
-
+            Console.WriteLine("*****************************************On Receive");
             if (message is CreateUserCommand)
             {
-                Console.Write("*****************************************CreateUserCommand triggered");
+                Console.WriteLine("*****************************************CreateUserCommand triggered");
                 var msg = message as CreateUserCommand;
                 
                 Context.ActorOf(Props.Create(

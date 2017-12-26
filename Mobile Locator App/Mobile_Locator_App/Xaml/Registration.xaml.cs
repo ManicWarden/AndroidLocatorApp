@@ -74,11 +74,11 @@ namespace Mobile_Locator_App.Xaml
                     DisplayAlert("Username", "Please ensure that the username does not contain any spaces.", "OK");
                     return;
                 }
-                if(CheckUsernameActor.checkUsername(Entry_Username.Text))
+                /*if(CheckUsernameActor.checkUsername(Entry_Username.Text))
                 {
                     DisplayAlert("Username", "That username is already in use, please enter another.", "OK");
                     return;
-                }
+                }*/
 
            
                 if (Entry_Password.Text.Length < 8 || Entry_Password.Text.Contains(" ")) // To ensure the password is of appropriate length
@@ -115,7 +115,7 @@ namespace Mobile_Locator_App.Xaml
                 {
 
                     // if the username does not exist in the database then call the CreateUser Actor
-
+                    Console.WriteLine("*******************************************Actor message sent.");
                     ActorPrimus.DBSupervisorActor.Tell(new DBSupervisor.CreateUserCommand(Entry_Username.Text, Entry_Password.Text, createUserActor));
                     
                     //DatabaseActions.CreateUser(Entry_Username.Text, Entry_Password.Text, Entry_Forename.Text, Entry_Surname.Text, Entry_Email.Text, Entry_PhoneNo.Text);

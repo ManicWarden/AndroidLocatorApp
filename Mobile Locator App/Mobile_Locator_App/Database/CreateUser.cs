@@ -21,7 +21,7 @@ namespace Mobile_Locator_App.Database
             _createUserActor = createUserActor;
             _username = username;
             _password = password;
-            Console.Write("**************************Create User triggered");
+            Console.WriteLine("**************************Create User triggered");
         }
 
 
