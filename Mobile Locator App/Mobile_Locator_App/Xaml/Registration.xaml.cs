@@ -42,10 +42,10 @@ namespace Mobile_Locator_App.Xaml
 
             // Will shift user focus to the next entry in the list, therefore username => password => forename => surname => email => phone number
             Entry_Username.Completed += (s, e) => Entry_Password.Focus(); // when the user has filled in the username and the user has hit the done button on the keyboard the focus will be set to the password textbox
-            Entry_Password.Completed += (s, e) => Entry_Forename.Focus();
+            /*Entry_Password.Completed += (s, e) => Entry_Forename.Focus();
             Entry_Forename.Completed += (s, e) => Entry_Surname.Focus();
             Entry_Surname.Completed += (s, e) => Entry_Email.Focus();
-            Entry_Email.Completed += (s, e) => Entry_PhoneNo.Focus();
+            Entry_Email.Completed += (s, e) => Entry_PhoneNo.Focus();*/
             //Entry_PhoneNo.Completed += (s, e) => ValidateRegistration(s, e);// will call the ValidateRegistration function when the phone number has been entered.
             //Button_CreateAccount.Clicked += (s, e) => ValidateRegistration(s, e); 
         }
@@ -57,11 +57,11 @@ namespace Mobile_Locator_App.Xaml
 
 
             if (string.IsNullOrWhiteSpace(Entry_Username.Text) || // checks the entries in the textboxes to ensure that seome value exists (That is not spaces)
-                string.IsNullOrWhiteSpace(Entry_Password.Text) ||
-                string.IsNullOrWhiteSpace(Entry_Forename.Text) ||
+                string.IsNullOrWhiteSpace(Entry_Password.Text))
+                /*string.IsNullOrWhiteSpace(Entry_Forename.Text) ||
                 string.IsNullOrWhiteSpace(Entry_Surname.Text) ||
                 string.IsNullOrWhiteSpace(Entry_Email.Text) ||
-                string.IsNullOrWhiteSpace(Entry_PhoneNo.Text))
+                string.IsNullOrWhiteSpace(Entry_PhoneNo.Text))*/
             {
                 DisplayAlert("Registration", "Registration Failed, please ensure that all fields are filled", "OK"); // a message box will be displayed to the user,
                                                                                                                      // First field is the title, second the main text, third the continue button
@@ -74,11 +74,12 @@ namespace Mobile_Locator_App.Xaml
                     DisplayAlert("Username", "Please ensure that the username does not contain any spaces.", "OK");
                     return;
                 }
-                /*if(CheckUsernameActor.checkUsername(Entry_Username.Text))
+
+                if(checkUsername(Entry_Username.Text))
                 {
                     DisplayAlert("Username", "That username is already in use, please enter another.", "OK");
                     return;
-                }*/
+                }
 
            
                 if (Entry_Password.Text.Length < 8 || Entry_Password.Text.Contains(" ")) // To ensure the password is of appropriate length
@@ -87,7 +88,7 @@ namespace Mobile_Locator_App.Xaml
                     return;
                 }
 
-                if (Entry_Forename.Text.Contains(" "))
+                /*if (Entry_Forename.Text.Contains(" "))
                 {
                     DisplayAlert("Forename", "Please ensure that the forename field does not contain any spaces.", "OK");
                 }
@@ -109,7 +110,7 @@ namespace Mobile_Locator_App.Xaml
                 {
                     DisplayAlert("Phone Number", "The entered phone number is invalid, please check it and ensure that there are no non-number characters and that all the numbers are present.", "OK");
                     return;
-                }
+                }*/
 
                 else
                 {
@@ -207,6 +208,20 @@ namespace Mobile_Locator_App.Xaml
 
             }
         }
+
+        public static bool checkUsername(string _username)
+        {
+            // will use the given username to check if it already exists
+
+            if (DBSupervisor.RedisDB.KeyExists(_username))
+            {
+                return true;
+            }
+
+            else
+                return false;
+        }
+
         void ToLogInPage(object sender, EventArgs e)
         {
             // close this page and open the Log in page, though not necessarily in that order

@@ -36,16 +36,59 @@ namespace Mobile_Locator_App.Xaml
         void UserLogIn(object sender, EventArgs e) // when the user clicks the log in button
         {
             // Put Some Validation Code
-            User user = new User(Entry_Username.Text, Entry_Password.Text); // will send the data entered into the textboxes by the user to the User class for initialization  
-            if (user.CheckUserData()) // if CheckUserData returns a false value (Therefore one or both of the username and password values is empty)
+             // will send the data entered into the textboxes by the user to the User class for initialization  
+            if (string.IsNullOrWhiteSpace(Entry_Username.Text)) // if CheckUserData returns a false value (Therefore one or both of the username and password values is empty)
             {
-                DisplayAlert("Login", "Login Succeeded", "OK");// First is label, second is text, third is button
-                // move user to the home page
+
+                DisplayAlert("Login", "Login Failed, Please enter a username", "OK");
+                return;
+
             }
+            if (string.IsNullOrWhiteSpace(Entry_Password.Text))
+            {
+                DisplayAlert("Login", "Login Failed, Please enter a password", "OK");
+                return;
+            }
+
+            if (checkUsername())
+            {
+                 User user = new User(Entry_Username.Text, Entry_Password.Text);
+                 DisplayAlert("Login", "Login Succeeded", "OK");// First is label, second is text, third is button
+                                                                   // move user to the home page
+            }
+
             else
             {
-                DisplayAlert("Login", "Login Failed", "OK");
-                // was going to write user = null; but that isn't necessary as the user will put in new details
+                DisplayAlert("Login", "Login Failed, the username/password combination was incorrect", "OK");
+                Entry_Username.Text = "";
+                Entry_Password.Text = "";
+                return;
+            }
+        }
+
+        bool checkUsername()
+        {
+            // will use the given username and password combination to check if it already exists
+
+            // if the username exists
+            if (DBSupervisor.RedisDB.KeyExists(Entry_Username.Text))
+            {
+                // if the password for that username is the same as the user entered
+                if(DBSupervisor.RedisDB.StringGet(Entry_Username.Text) == Entry_Password.Text)
+                {
+                    return true;
+                }
+                
+                else
+                {
+                    return false;
+                }
+                
+            }
+
+            else
+            {
+                return false;
             }
         }
 
