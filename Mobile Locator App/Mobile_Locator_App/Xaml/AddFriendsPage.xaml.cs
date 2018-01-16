@@ -38,11 +38,6 @@ namespace Mobile_Locator_App.Xaml
             //NavigationCode.GoFriends();
         }
 
-        private void Button_NavAddFriends_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushModalAsync(new AddFriendsPage());
-            //NavigationCode.GoAddFriends();
-        }
 
         private void Button_NavLocator_Clicked(object sender, EventArgs e)
         {
@@ -50,15 +45,15 @@ namespace Mobile_Locator_App.Xaml
             //NavigationCode.GoLocator();
         }
 
-        private void Button_NavSettings_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushModalAsync(new SettingsPage());
-            //NavigationCode.GoSettings();
-        }
 
         private void Button_Exit_Clicked(object sender, EventArgs e)
         {
             NavigationCode.ExitApp();
+        }
+
+        private void Button_Submit_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -54,7 +54,8 @@ namespace Mobile_Locator_App.Xaml
             {
                  User user = new User(Entry_Username.Text, Entry_Password.Text);
                  DisplayAlert("Login", "Login Succeeded", "OK");// First is label, second is text, third is button
-                                                                   // move user to the home page
+                                                                // move user to the home page
+                Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.HomePage());
             }
 
             else

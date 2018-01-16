@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Mobile_Locator_App.Code;
 
 namespace Mobile_Locator_App.Database
 {
@@ -30,6 +31,12 @@ namespace Mobile_Locator_App.Database
             // get list of friends usernames by using the 
             // key "currentUsername"Friends then sending said list to the 
             // display function
+           
+            if (DBSupervisor.RedisDB.KeyExists(User.Username + "Friends"))
+            {
+                // get the list of friends
+            }
+
         }
 
         protected override void OnReceive(object message)

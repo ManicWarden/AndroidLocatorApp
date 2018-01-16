@@ -46,17 +46,6 @@ namespace Mobile_Locator_App.Xaml
             //NavigationCode.GoAddFriends();
         }
 
-        private void Button_NavLocator_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushModalAsync(new LocatorPage());
-            //NavigationCode.GoLocator();
-        }
-
-        private void Button_NavSettings_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushModalAsync(new SettingsPage());
-            //NavigationCode.GoSettings();
-        }
 
         private void Button_Exit_Clicked(object sender, EventArgs e)
         {

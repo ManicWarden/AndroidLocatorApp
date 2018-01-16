@@ -12,16 +12,17 @@
                     <Image x:Name="LogInIcon" Source="LogInIcon.png" Margin="0,80,0,0"/>
                 </StackLayout>
 
-                <StackLayout x:Name="NavigationBar" VerticalOptions="FillAndExpand">
+                <StackLayout x:Name="NavigationBar"  HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
                     <!--For the Nav buttons-->
-                    <Button x:Name="Button_NavHome"  Text="Home" Clicked="Button_NavHome_Clicked"/>
-                    <Button x:Name="Button_NavFriends" Text="Friends" Clicked="Button_NavFriends_Clicked"/>
-                    <Button x:Name="Button_NavAddFriends" Text="Add Friends" Clicked="Button_NavAddFriends_Clicked"/>
-                    <Button x:Name="Button_NavLocator" Text="Find Friends" Clicked="Button_NavLocator_Clicked"/>
-                    <Button x:Name="Button_NavSettings" Text="Settings" Clicked="Button_NavSettings_Clicked"/>
+                    <!--<Button x:Name="Button_NavHome"  Text="Home" Clicked="Button_NavHome_Clicked"/>-->
+                    <Button x:Name="Button_NavHome" Text="Home" Clicked="Button_NavHome_Clicked" BackgroundColor="Azure"/>
+                    <Button x:Name="Button_NavFriends" Text="Friends" Clicked="Button_NavFriends_Clicked" BackgroundColor="Azure"/>
+                    
+                    <Button x:Name="Button_NavLocator" Text="Find Friends" Clicked="Button_NavLocator_Clicked" BackgroundColor="Azure"/>
+                    <!--<Button x:Name="Button_NavSettings" Text="Settings" Clicked="Button_NavSettings_Clicked"/>-->
                 </StackLayout>
 
-                <StackLayout x:Name="MainContentSection" VerticalOptions="StartAndExpand">
+                <StackLayout x:Name="MainContentSection" VerticalOptions="StartAndExpand" >
                     <!--Log In Section where the user will enter their details-->
                     <StackLayout.Padding>
 
@@ -36,12 +37,20 @@
                             </OnIdiom.Tablet>
                         </OnIdiom>
 
+
+
                     </StackLayout.Padding>
+                    <Label x:Name="Label_Description" Text="Please enter the username of your friend below"/>
+                    
+                    <StackLayout x:Name="AddFriendsSection" VerticalOptions="FillAndExpand" Orientation="Horizontal">
+                        <Label x:Name="Label_FriendsUsername" Text="Username"/>
+                        <Entry x:Name="Entry_Username" Placeholder="Woogie43"/>
+                    </StackLayout>
 
-
-                    <StackLayout x:Name="BottomButtons" VerticalOptions="FillAndExpand" Orientation="Horizontal">
+                    <StackLayout x:Name="BottomButtons" VerticalOptions="FillAndExpand" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                         <!--For the Buttons at the bottom of the page-->
                         <Button x:Name="Button_Exit" Text="Exit" Clicked="Button_Exit_Clicked"/>
+                        <Button x:Name="Button_Submit" Text="Submit" Clicked="Button_Submit_Clicked"/>
                     </StackLayout>
 
                 </StackLayout>

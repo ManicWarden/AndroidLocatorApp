@@ -31,9 +31,9 @@
 
                 <ActivityIndicator x:Name="ActivitySpinner" Color="Red" IsRunning="True" />
                 <Label x:Name="Label_Username" Text="Username" />
-                <Entry x:Name="Entry_Username" Placeholder="Username" />
+                <Entry x:Name="Entry_Username" Placeholder="Username" Text="test"/>
                 <Label x:Name="Label_Password" Text="Password"/>
-                <Entry x:Name="Entry_Password" Placeholder="Password"/>
+                <Entry x:Name="Entry_Password" Placeholder="Password" Text="testpassword"/>
                 <Button x:Name="Button_LogIn"  Text="Log In" Clicked="UserLogIn"/>
                 <Button x:Name="Button_Register" Text="Create Account" Clicked="UserRegister"/>
                 <Button x:Name="Button_Exit"  Text="Exit" Clicked="ExitApplication"/>
