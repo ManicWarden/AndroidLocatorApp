@@ -67,16 +67,16 @@ namespace Mobile_Locator_App.Database
         }
 
 
-        public class CreateFriendCommand
+        public class AddFriendCommand
         {
-            public CreateFriendCommand(string userName, IActorRef createFriendActor)
+            public AddFriendCommand(string userName, IActorRef addFriendActor)
             {
                 Username = userName;
-                CreateFriendActor = createFriendActor;
+                AddFriendActor = addFriendActor;
             }
 
             public string Username { get; private set; }
-            public IActorRef CreateFriendActor { get; private set; }
+            public IActorRef AddFriendActor { get; private set; }
 
 
         }
@@ -126,12 +126,12 @@ namespace Mobile_Locator_App.Database
                 Context.ActorOf(Props.Create(
                 () => new CreateUser(msg.CreateUserActor, msg.Username, msg.Password)));
             }
-            if (message is CreateFriendCommand)
+            if (message is AddFriendCommand)
             {
-                var msg = message as CreateFriendCommand;
+                var msg = message as AddFriendCommand;
 
                 Context.ActorOf(Props.Create(
-                () => new CreateFriend(msg.CreateFriendActor, msg.Username)));
+                () => new AddFriend(msg.AddFriendActor, msg.Username)));
             }
             if (message is GetUserCommand)
             {

@@ -20,7 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Code\SetLocationActor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Code\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Code\ValidationActor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Database\CreateFriend.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Database\AddFriend.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\DBSupervisor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\GetFriendLocation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\GetFriends.cs" />
