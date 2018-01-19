@@ -118,10 +118,12 @@ namespace Mobile_Locator_App.Xaml
                     // if the username does not exist in the database then call the CreateUser Actor
                     Console.WriteLine("*******************************************Actor message sent.");
                     ActorPrimus.DBSupervisorActor.Tell(new DBSupervisor.CreateUserCommand(Entry_Username.Text, Entry_Password.Text, createUserActor));
-                    
+
                     //DatabaseActions.CreateUser(Entry_Username.Text, Entry_Password.Text, Entry_Forename.Text, Entry_Surname.Text, Entry_Email.Text, Entry_PhoneNo.Text);
                     //string username, string password, string forename, string surname, string email, string phoneNumber
+                    User user = new User(Entry_Username.Text, Entry_Password.Text);
                     DisplayAlert("Registration Complete", "Registration Complete, Enjoy.", "OK");
+                    Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.HomePage());
                     // move user to the home page
 
                 }

@@ -17,6 +17,7 @@ namespace Mobile_Locator_App.Xaml
         {
             InitializeComponent();
             InitializePageDesign();
+
         }
 
         void InitializePageDesign() // to set the elements on the Log in page to the colours set in the Constants Class

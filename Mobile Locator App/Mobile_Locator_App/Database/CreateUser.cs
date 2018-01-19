@@ -22,19 +22,22 @@ namespace Mobile_Locator_App.Database
             _username = username;
             _password = password;
             Console.WriteLine("**************************Create User triggered");
+            InsertUser();
         }
 
         private void InsertUser()
         {
             // inserts a new unique key into the server with
             // a password value
+            Console.WriteLine("*********************/*****************************InsertUser triggered");
             DBSupervisor.RedisDB.StringSet(_username, _password);
         }
 
 
         protected override void OnReceive(object message)
         {
-            if(message is CreateUser)
+            Console.WriteLine("**************************************************CreateUser OnReceive triggered");
+            if (message is CreateUser)
             {
 
                 // method call

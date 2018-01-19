@@ -15,7 +15,7 @@ namespace Mobile_Locator_App.Xaml
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddFriendsPage : ContentPage
     {
-        private readonly IActorRef dbSupervisor;
+        
         private readonly IActorRef addFriendActor;
         public AddFriendsPage()
         {
@@ -61,23 +61,33 @@ namespace Mobile_Locator_App.Xaml
 
         private void Button_Submit_Clicked(object sender, EventArgs e)
         {
+            
             // if there is a value in the username textbox
             if (!string.IsNullOrWhiteSpace(Entry_Username.Text))
             {
                 Console.WriteLine("************AddFriendActor Called");
                 // if the entered username exists
-                if (DBSupervisor.RedisDB.KeyExists(Entry_Username.Text))
+                if (Entry_Username.Text != User.Username)
                 {
-                    if (checkFriend())
+                    if (DBSupervisor.RedisDB.KeyExists(Entry_Username.Text))
                     {
-                        ActorPrimus.DBSupervisorActor.Tell(new DBSupervisor.AddFriendCommand(Entry_Username.Text, addFriendActor));
+                        if (checkFriend())
+                        {
+                            ActorPrimus.DBSupervisorActor.Tell(new DBSupervisor.AddFriendCommand(Entry_Username.Text, addFriendActor));
+                            DisplayAlert("Success", Entry_Username.Text + " has been added as a friend", "OK");
+
+                        }
+
+
                     }
-
-
+                    else
+                    {
+                        DisplayAlert("Invalid Username", "The username you have entered is not recognised, please try another", "OK");
+                    }
                 }
                 else
                 {
-                    DisplayAlert("Invalid Username", "The username you have entered is not recognised, please try another", "OK");
+                    DisplayAlert("Alert", "Please do not enter your own username.", "OK");
                 }
 
             }
@@ -89,26 +99,34 @@ namespace Mobile_Locator_App.Xaml
 
         private bool checkFriend()
         {
+            var length = DBSupervisor.RedisDB.ListLength(User.Username + "Friends");
+            bool check = true;
+
             // if the user already has a list in which other users usernames can be stored
             if (DBSupervisor.RedisDB.KeyExists(User.Username + "Friends"))
             {
-                var values = DBSupervisor.RedisDB.StringGet(User.Username + "Friends");
-
-                // check if the user entered by the current user is already in the current users friend list
-                if (values.ToString().Contains(Entry_Username.Text))
+                
+                for(int i = 0; i < length; i++)
                 {
-                    DisplayAlert("Friend Exists", "The username you entered is already associated as a friend to this account", "OK");
-                    // if the entered username already exists in the current users friend list return false so that it is not entered again
-                    return false;
+                    var value = DBSupervisor.RedisDB.ListGetByIndex(User.Username + "Friends", i);
+                    // check if the user entered by the current user is already in the current users friend list
+                    if (value.ToString().Contains(Entry_Username.Text))
+                    {
+                        DisplayAlert("Friend Exists", "The username you entered is already associated as a friend to this account", "OK");
+                        check = false;
+                    }
+                }
 
+                // if the entered username already exists in the current users friend list return false so that it is not entered again 
+                if (check is false)
+                {
+                    return false;
                 }
                 else
                 {
-                    // if the entered username is not inside the users friend list
-                    // return true so that a request can be made
                     return true;
                 }
-
+                
             }
             else
             {

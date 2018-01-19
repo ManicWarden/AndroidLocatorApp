@@ -15,8 +15,7 @@ namespace Mobile_Locator_App.Database
         /// </summary>
     class AddFriend : UntypedActor
     {
-        public const string StartCommand = "start";
-        public const string ExitCommand = "exit";
+
         private readonly IActorRef _addFriendActor;
         private readonly string _username;
         private readonly string _password;
@@ -27,21 +26,23 @@ namespace Mobile_Locator_App.Database
         {
             _addFriendActor = addFriendActor;
             _username = username;
-            
+            addFriend();
         }
 
         private void addFriend()
         {
             // add a new friend to the list 
+            // may have to use hashes instead of lists
+
+            Console.WriteLine("********************************** addFriend running");
             DBSupervisor.RedisDB.ListRightPush(User.Username + "Friends", _username);     
         }
 
         protected override void OnReceive(object message)
         {
-            if (message.Equals(StartCommand))
-            {
-                addFriend();
-            }
+            Console.WriteLine("***************************************************** addFriendActor onReceive");
+            addFriend();
+
 
         }
     }

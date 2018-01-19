@@ -53,7 +53,7 @@ namespace Mobile_Locator_App.Database
             {
                 
                 string value = userName;
-                RedisDB.StringSet(userName, password); // sets the key to the unique username and the value to the password
+                //RedisDB.StringSet(userName, password); // sets the key to the unique username and the value to the password
                 Username = userName;
                 CreateUserActor = createUserActor;
                 Password = password;
@@ -98,9 +98,9 @@ namespace Mobile_Locator_App.Database
 
         public class GetFriendsCommand
         {
-            public GetFriendsCommand(string userName, IActorRef getFriendsActor)
+            public GetFriendsCommand(IActorRef getFriendsActor)
             {
-                Username = userName;
+                
                 GetFriendsActor = getFriendsActor;
                 
             }
@@ -128,6 +128,7 @@ namespace Mobile_Locator_App.Database
             }
             if (message is AddFriendCommand)
             {
+                Console.WriteLine("*****************************************AddFriendCommand triggered");
                 var msg = message as AddFriendCommand;
 
                 Context.ActorOf(Props.Create(
@@ -145,7 +146,7 @@ namespace Mobile_Locator_App.Database
                 var msg = message as GetFriendsCommand;
 
                 Context.ActorOf(Props.Create(
-                () => new GetFriends(msg.GetFriendsActor, msg.Username)));
+                () => new GetFriends(msg.GetFriendsActor)));
             }
         }
 

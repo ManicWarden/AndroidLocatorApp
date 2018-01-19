@@ -60,7 +60,7 @@ namespace Mobile_Locator_App.Xaml
 
             else
             {
-                DisplayAlert("Login", "Login Failed, the username/password combination was incorrect", "OK");
+                DisplayAlert("Login", "Login Failed, the username/password combination was incorrect", "OK ");
                 Entry_Username.Text = "";
                 Entry_Password.Text = "";
                 return;

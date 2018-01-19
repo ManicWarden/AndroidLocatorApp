@@ -7,28 +7,44 @@ using Mobile_Locator_App.Code;
 using Mobile_Locator_App.Database;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Akka.Actor;
 
 namespace Mobile_Locator_App.Xaml
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class HomePage : ContentPage
 	{
+        private readonly IActorRef getFriendsActor;
+        public List<string> Friends = new List<string>();
         public HomePage()
         {
             InitializeComponent();
             InitializePageDesign();
+
+            ActorPrimus.Initialise();
+
+            Props getFriendsProps = Props.Create<GetFriends>();
+            getFriendsActor = ActorPrimus.MainActorSystem.ActorOf(getFriendsProps, "addFriendActor");
+
+            
         }
 
         void InitializePageDesign() // to set the elements on the Log in page to the colours set in the Constants Class
         {
             BackgroundColor = Constants.BackgroundColour;
             // call GetFriends to populate the listview
-            GetFriends();
+            getFriends();
             DisplayAlert("Username", "Current user is " + User.Username, "OK");
         }
 
-        private void GetFriends()
+        private void getFriends()
         {
+            
+
+            ActorPrimus.DBSupervisorActor.Tell(new DBSupervisor.GetFriendsCommand(getFriendsActor));
+            
+            
+            
             // use an actor to get the users friends in a list
             // which will then be used to populate the listview
 
