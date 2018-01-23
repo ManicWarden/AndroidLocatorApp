@@ -18,7 +18,7 @@ namespace Mobile_Locator_App.Database
 
         private readonly IActorRef _addFriendActor;
         private readonly string _username;
-        private readonly string _password;
+        
 
 
 

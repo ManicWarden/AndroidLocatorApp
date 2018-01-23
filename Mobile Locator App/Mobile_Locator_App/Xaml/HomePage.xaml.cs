@@ -15,6 +15,7 @@ namespace Mobile_Locator_App.Xaml
 	public partial class HomePage : ContentPage
 	{
         private readonly IActorRef getFriendsActor;
+        private readonly IActorRef retrieveFriendsActor;
         public List<string> Friends = new List<string>();
         public HomePage()
         {
@@ -23,28 +24,54 @@ namespace Mobile_Locator_App.Xaml
 
             ActorPrimus.Initialise();
 
-            Props getFriendsProps = Props.Create<GetFriends>();
-            getFriendsActor = ActorPrimus.MainActorSystem.ActorOf(getFriendsProps, "addFriendActor");
+            Props getFriendProps = Props.Create<GetFriends>();
+            getFriendsActor = ActorPrimus.MainActorSystem.ActorOf(getFriendProps, "getFriendsActor");
 
-            
+            MessagingCenter.Subscribe<GetFriends, List<string>>(this, "hasFriends", (sender, arg) =>
+            {
+                Console.WriteLine("************************************************************MessagingCenter has friends");
+                // if the list has at least one value
+                if (arg.Count > 0)
+                {
+                    loadFriends(arg);
+                }
+                else
+                {
+                    noFriends();
+                }
+            });
+
+            MessagingCenter.Subscribe<GetFriends, List<string>>(this, "hasNoFriends", (sender, arg) =>
+            {
+                Console.WriteLine("************************************************************MessagingCenter hasNoFriends");
+                noFriendList();
+            });
+
+            getFriends();
         }
 
         void InitializePageDesign() // to set the elements on the Log in page to the colours set in the Constants Class
         {
             BackgroundColor = Constants.BackgroundColour;
             // call GetFriends to populate the listview
-            getFriends();
+            
             DisplayAlert("Username", "Current user is " + User.Username, "OK");
         }
 
         private void getFriends()
         {
+            Console.WriteLine("************************************************************getFriends");
+            //RetrieveFriends retrieveFriends = new RetrieveFriends();
             
 
+            
+
+            Console.WriteLine("**********************************************************getFriends after");
             ActorPrimus.DBSupervisorActor.Tell(new DBSupervisor.GetFriendsCommand(getFriendsActor));
             
-            
-            
+
+
+
             // use an actor to get the users friends in a list
             // which will then be used to populate the listview
 
@@ -58,7 +85,24 @@ namespace Mobile_Locator_App.Xaml
             */
         }
 
+        public void loadFriends(List<string> Friends)
+        {
+            // load the list of friends onto the listview
+            Console.WriteLine("**********************************************************loadFriends");
+            FriendListView.ItemsSource = Friends;
+        }
 
+        public void noFriends()
+        {
+            Console.WriteLine("**********************************************************noFriends");
+            // display no friends found on the list view
+            FriendListView.ItemsSource = new string[] { "No friends were found" };
+        }
+
+        public void noFriendList()
+        {
+            FriendListView.ItemsSource = new string[] { "No friends were found please add some" };
+        }
 
 
         private void Button_NavFriends_Clicked(object sender, EventArgs e)
@@ -83,5 +127,12 @@ namespace Mobile_Locator_App.Xaml
         {
             NavigationCode.ExitApp();
         }
+
+        
+    }
+
+    public class HomePageFriends
+    {
+       
     }
 }

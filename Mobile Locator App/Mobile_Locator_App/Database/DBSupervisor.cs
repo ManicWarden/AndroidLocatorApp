@@ -48,10 +48,10 @@ namespace Mobile_Locator_App.Database
 
         public class CreateUserCommand
         {
-            
+
             public CreateUserCommand(string userName, string password, IActorRef createUserActor)
             {
-                
+
                 string value = userName;
                 //RedisDB.StringSet(userName, password); // sets the key to the unique username and the value to the password
                 Username = userName;
@@ -87,7 +87,7 @@ namespace Mobile_Locator_App.Database
             {
                 Username = userName;
                 GetUserActor = getUserActor;
-                
+
             }
 
             public string Username { get; private set; }
@@ -100,13 +100,8 @@ namespace Mobile_Locator_App.Database
         {
             public GetFriendsCommand(IActorRef getFriendsActor)
             {
-                
                 GetFriendsActor = getFriendsActor;
-                
             }
-
-            public string Username { get; private set; }
- 
             public IActorRef GetFriendsActor { get; private set; }
 
         }
@@ -122,7 +117,7 @@ namespace Mobile_Locator_App.Database
             {
                 Console.WriteLine("*****************************************CreateUserCommand triggered");
                 var msg = message as CreateUserCommand;
-                
+
                 Context.ActorOf(Props.Create(
                 () => new CreateUser(msg.CreateUserActor, msg.Username, msg.Password)));
             }
@@ -143,13 +138,13 @@ namespace Mobile_Locator_App.Database
             }
             if (message is GetFriendsCommand)
             {
+                Console.WriteLine("**********************************************************GetFriendsCommand");
                 var msg = message as GetFriendsCommand;
 
                 Context.ActorOf(Props.Create(
                 () => new GetFriends(msg.GetFriendsActor)));
             }
         }
-
     }
 
 }

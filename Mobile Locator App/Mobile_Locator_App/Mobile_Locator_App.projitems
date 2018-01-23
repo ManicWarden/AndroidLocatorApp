@@ -26,6 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Database\GetFriends.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\GetUser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\CreateUser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Database\RetrieveFriends.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
