@@ -23,6 +23,7 @@ namespace Mobile_Locator_App.Database
         private readonly IActorRef _createFriend;
         private readonly IActorRef _getFriends;
         private readonly IActorRef _getUser;
+        private readonly IActorRef _confirmFriendRequestActor;
 
         #endregion
 
@@ -106,6 +107,18 @@ namespace Mobile_Locator_App.Database
 
         }
 
+        public class ConfirmFriendRequestCommand
+        {
+            public ConfirmFriendRequestCommand(IActorRef confirmFriendRequestActor, string username)
+            {
+                ConfirmFriendRequestActor = confirmFriendRequestActor;
+                Username = username;
+             }
+
+            public IActorRef ConfirmFriendRequestActor { get; private set; }
+            public string Username { get; private set; }
+        }
+
         #endregion
 
         protected override void OnReceive(object message)
@@ -143,6 +156,14 @@ namespace Mobile_Locator_App.Database
 
                 Context.ActorOf(Props.Create(
                 () => new GetFriends(msg.GetFriendsActor)));
+            }
+            if(message is ConfirmFriendRequestCommand)
+            {
+                Console.WriteLine("**********************************************************ConfirmFriendRequestCommand");
+                var msg = message as ConfirmFriendRequestCommand;
+
+                Context.ActorOf(Props.Create(
+                () => new ConfirmFriendRequest(msg.ConfirmFriendRequestActor, msg.Username)));
             }
         }
     }

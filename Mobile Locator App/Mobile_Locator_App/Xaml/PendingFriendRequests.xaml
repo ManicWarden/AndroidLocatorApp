@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mobile_Locator_App.Xaml.HomePage">
+             x:Class="Mobile_Locator_App.Xaml.PendingFriendRequests">
     <ContentPage.Content>
         <ScrollView >
             <StackLayout x:Name="MasterLayout">
@@ -15,7 +15,7 @@
                 <StackLayout x:Name="NavigationBar"  HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
                     <!--For the Nav buttons-->
                     <!--<Button x:Name="Button_NavHome"  Text="Home" Clicked="Button_NavHome_Clicked"/>-->
-                    <Button x:Name="Button_NavFriends" Text="Pending" Clicked="Button_NavPending_Clicked" BackgroundColor="Azure"/>
+                    <Button x:Name="Button_NavHome" Text="Home" Clicked="Button_NavHome_Clicked" BackgroundColor="Azure"/>
                     <Button x:Name="Button_NavAddFriends" Text="Add Friends" Clicked="Button_NavAddFriends_Clicked" BackgroundColor="Azure"/>
                     <Button x:Name="Button_NavLocator" Text="Find Friends" Clicked="Button_NavLocator_Clicked" BackgroundColor="Azure"/>
                     <!--<Button x:Name="Button_NavSettings" Text="Settings" Clicked="Button_NavSettings_Clicked"/>-->
@@ -33,7 +33,7 @@
                             </OnIdiom.Phone>
                             <OnIdiom.Tablet>
                                 140,150,140,0
-                            </OnIdiom.Tablet> 
+                            </OnIdiom.Tablet>
                         </OnIdiom>
 
 

@@ -16,7 +16,7 @@
                     <!--For the Nav buttons-->
                     <!--<Button x:Name="Button_NavHome"  Text="Home" Clicked="Button_NavHome_Clicked"/>-->
                     <Button x:Name="Button_NavHome" Text="Home" Clicked="Button_NavHome_Clicked" BackgroundColor="Azure"/>
-                    <Button x:Name="Button_NavFriends" Text="Friends" Clicked="Button_NavFriends_Clicked" BackgroundColor="Azure"/>
+                    <Button x:Name="Button_NavFriends" Text="Pending" Clicked="Button_NavPending_Clicked" BackgroundColor="Azure"/>
                     <Button x:Name="Button_NavAddFriends" Text="Add Friends" Clicked="Button_NavAddFriends_Clicked" BackgroundColor="Azure"/>
                     
                     <!--<Button x:Name="Button_NavSettings" Text="Settings" Clicked="Button_NavSettings_Clicked"/>-->

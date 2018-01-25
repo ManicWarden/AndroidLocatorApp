@@ -35,10 +35,10 @@ namespace Mobile_Locator_App.Xaml
             //NavigationCode.GoHome();
         }
 
-        private void Button_NavFriends_Clicked(object sender, EventArgs e)
+        private void Button_NavPending_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new FriendsPage());
-            //NavigationCode.GoFriends();
+            Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.PendingFriendRequests());
+
         }
 
         private void Button_NavAddFriends_Clicked(object sender, EventArgs e)

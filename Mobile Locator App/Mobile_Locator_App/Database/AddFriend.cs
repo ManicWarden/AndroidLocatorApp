@@ -34,8 +34,12 @@ namespace Mobile_Locator_App.Database
             // add a new friend to the list 
             // may have to use hashes instead of lists
 
-            Console.WriteLine("********************************** addFriend running");
-            DBSupervisor.RedisDB.ListRightPush(User.Username + "Friends", _username);     
+            
+
+            // add current users username to the other users pending friends list
+
+            DBSupervisor.RedisDB.ListRightPush(_username + "PendingFriends", User.Username);
+            
         }
 
         protected override void OnReceive(object message)

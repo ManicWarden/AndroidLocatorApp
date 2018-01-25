@@ -15,8 +15,8 @@ namespace Mobile_Locator_App.Xaml
 	public partial class HomePage : ContentPage
 	{
         private readonly IActorRef getFriendsActor;
-        private readonly IActorRef retrieveFriendsActor;
-        public List<string> Friends = new List<string>();
+        
+        
         public HomePage()
         {
             InitializeComponent();
@@ -105,9 +105,9 @@ namespace Mobile_Locator_App.Xaml
         }
 
 
-        private void Button_NavFriends_Clicked(object sender, EventArgs e)
+        private void Button_NavPending_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.FriendsPage());
+            Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.PendingFriendRequests());
 
         }
 
@@ -128,11 +128,7 @@ namespace Mobile_Locator_App.Xaml
             NavigationCode.ExitApp();
         }
 
-        
+
     }
 
-    public class HomePageFriends
-    {
-       
-    }
 }

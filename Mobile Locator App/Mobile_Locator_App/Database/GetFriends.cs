@@ -28,6 +28,7 @@ namespace Mobile_Locator_App.Database
             
         }
 
+
         private void RetrieveFriends()
         {
             Console.WriteLine("**********************************************************RetrieveFriends***");

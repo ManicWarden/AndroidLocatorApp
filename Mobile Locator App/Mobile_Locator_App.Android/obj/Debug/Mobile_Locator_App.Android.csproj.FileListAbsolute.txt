@@ -58,3 +58,4 @@ E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locat
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\android\assets\Xamarin.Forms.Core.dll.mdb
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.PendingFriendRequests.xaml.g.cs

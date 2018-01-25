@@ -21,9 +21,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Code\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Code\ValidationActor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\AddFriend.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Database\ConfirmFriendRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\DBSupervisor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\GetFriendLocation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\GetFriends.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Database\GetPendingFriends.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\GetUser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\CreateUser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\RetrieveFriends.cs" />
@@ -48,6 +50,10 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Xaml\LogInPage.xaml.cs">
       <DependentUpon>LogInPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Xaml\PendingFriendRequests.xaml.cs">
+      <DependentUpon>PendingFriendRequests.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Xaml\Registration.xaml.cs">
@@ -107,6 +113,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Xaml\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Xaml\PendingFriendRequests.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
