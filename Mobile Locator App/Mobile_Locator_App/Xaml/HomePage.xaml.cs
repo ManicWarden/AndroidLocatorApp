@@ -8,6 +8,7 @@ using Mobile_Locator_App.Database;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Akka.Actor;
+using System.Collections.ObjectModel;
 
 namespace Mobile_Locator_App.Xaml
 {
@@ -15,12 +16,14 @@ namespace Mobile_Locator_App.Xaml
 	public partial class HomePage : ContentPage
 	{
         private readonly IActorRef getFriendsActor;
-        
-        
+        private ObservableCollection<string> FriendCollection = new ObservableCollection<string>();
+
+
         public HomePage()
         {
             InitializeComponent();
             InitializePageDesign();
+            FriendCollection.Clear();
 
             ActorPrimus.Initialise();
 
@@ -46,6 +49,7 @@ namespace Mobile_Locator_App.Xaml
                 Console.WriteLine("************************************************************MessagingCenter hasNoFriends");
                 noFriendList();
             });
+            FriendListView.ItemsSource = FriendCollection;
             getFriends();
 
         }
@@ -92,7 +96,12 @@ namespace Mobile_Locator_App.Xaml
             // load the list of friends onto the listview
             Console.WriteLine("**********************************************************loadFriends");
             //DisplayAlert("Test", "The value Friends is: " + Friends.ToString(), "OK");
-            FriendListView.ItemsSource = Friends;
+
+            for(int i = 0; i<Friends.Count; i++)
+            {
+                FriendCollection.Add(Friends[i]);
+            }
+            FriendListView.ItemsSource = FriendCollection;
             Console.WriteLine("**********************************************************loadFriends After");
         }
 
@@ -100,12 +109,15 @@ namespace Mobile_Locator_App.Xaml
         {
             Console.WriteLine("**********************************************************noFriends");
             // display no friends found on the list view
-            FriendListView.ItemsSource = new string[] { "No friends were found" };
+            FriendCollection.Add("No friends were found");
+            //FriendListView.ItemsSource = new string[] { "No friends were found" };
+            
         }
 
         public void noFriendList()
         {
-            FriendListView.ItemsSource = new string[] { "No friends were found please add some" };
+            FriendCollection.Add("No friends were found");
+            //FriendListView.ItemsSource = new string[] { "No friends were found please add some" };
         }
 
 
