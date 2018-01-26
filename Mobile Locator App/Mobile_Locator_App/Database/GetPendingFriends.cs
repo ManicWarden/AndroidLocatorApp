@@ -13,14 +13,12 @@ namespace Mobile_Locator_App.Database
 
         public GetPendingFriends(IActorRef getPendingFriendsActor)
         {
-
-            // establish messagingCenter between GetPendingFriends and PendingFriendRequest page
-            // and return PendingFriends to the page
+            RetrievePendingFriends();
         }
 
         private void RetrievePendingFriends()
         {
-            Console.WriteLine("**********************************************************RetrieveFriends After");
+            Console.WriteLine("*********************************************************RetrieveFriends After");
             if (DBSupervisor.RedisDB.KeyExists(User.Username + "PendingFriends"))
             {
                 Console.WriteLine("**********************************************************DBSupervisor.RedisDB.KeyExists");
@@ -29,7 +27,8 @@ namespace Mobile_Locator_App.Database
                 var length = DBSupervisor.RedisDB.ListLength(User.Username + "PendingFriends");
                 for (int i = 0; i < length; i++)
                 {
-                    Console.WriteLine("**********************************************************for");
+                    Console.WriteLine("**********************************************************Pendingfor");
+                    Console.WriteLine("********************************************* Current PendingFriend value = " + DBSupervisor.RedisDB.ListGetByIndex(User.Username + "PendingFriends", i));
                     var value = DBSupervisor.RedisDB.ListGetByIndex(User.Username + "PendingFriends", i);
                     PendingFriends.Add(value.ToString());
                 }

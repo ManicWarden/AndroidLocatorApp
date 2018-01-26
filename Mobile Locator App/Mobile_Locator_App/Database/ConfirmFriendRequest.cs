@@ -27,7 +27,8 @@ namespace Mobile_Locator_App.Database
         private void ConfirmRequest()
         {
             Console.WriteLine("********************************** addFriend running");
-            DBSupervisor.RedisDB.ListRightPush(User.Username + "Friends", _username);     
+            DBSupervisor.RedisDB.ListRightPush(User.Username + "Friends", _username);
+            DBSupervisor.RedisDB.ListRemove(User.Username + "PendingFriends", _username);
         }
 
 

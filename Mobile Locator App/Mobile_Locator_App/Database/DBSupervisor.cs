@@ -113,10 +113,20 @@ namespace Mobile_Locator_App.Database
             {
                 ConfirmFriendRequestActor = confirmFriendRequestActor;
                 Username = username;
-             }
+            }
 
             public IActorRef ConfirmFriendRequestActor { get; private set; }
             public string Username { get; private set; }
+        }
+
+        public class GetPendingFriendsCommand
+        {
+            public GetPendingFriendsCommand(IActorRef getPendingFriendsActor)
+            {
+                GetPendingFriendsActor = getPendingFriendsActor;
+            }
+
+            public IActorRef GetPendingFriendsActor { get; private set; }
         }
 
         #endregion
@@ -164,6 +174,14 @@ namespace Mobile_Locator_App.Database
 
                 Context.ActorOf(Props.Create(
                 () => new ConfirmFriendRequest(msg.ConfirmFriendRequestActor, msg.Username)));
+            }
+            if(message is GetPendingFriendsCommand)
+            {
+                Console.WriteLine("**********************************************************GetPendingFriendsCommand");
+                var msg = message as GetPendingFriendsCommand;
+
+                Context.ActorOf(Props.Create(
+                () => new GetPendingFriends(msg.GetPendingFriendsActor)));
             }
         }
     }

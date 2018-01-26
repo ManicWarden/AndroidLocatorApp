@@ -54,7 +54,7 @@ namespace Mobile_Locator_App.Xaml
 
         }
 
-        void InitializePageDesign() // to set the elements on the Log in page to the colours set in the Constants Class
+        void InitializePageDesign() // to set the elements on the page to the colours set in the Constants Class
         {
             BackgroundColor = Constants.BackgroundColour;
             // call GetFriends to populate the listview

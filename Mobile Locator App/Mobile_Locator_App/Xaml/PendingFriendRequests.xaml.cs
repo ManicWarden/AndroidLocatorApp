@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Mobile_Locator_App.Database;
 using Akka.Actor;
+using System.Collections.ObjectModel;
 
 namespace Mobile_Locator_App.Xaml
 {
@@ -16,18 +17,25 @@ namespace Mobile_Locator_App.Xaml
 	public partial class PendingFriendRequests : ContentPage
 	{
         private readonly IActorRef getPendingFriendsActor;
+        private readonly IActorRef confirmFriendRequestActor;
+        private ObservableCollection<string> PendingFriendCollection = new ObservableCollection<string>();
 
-        
         public PendingFriendRequests ()
 		{
 			InitializeComponent ();
+            InitializePageDesign();
+            PendingFriendCollection.Clear();
 
+            
             ActorPrimus.Initialise();
 
             Props GetPendingFriendsProps = Props.Create<GetPendingFriends>();
             getPendingFriendsActor = ActorPrimus.MainActorSystem.ActorOf(GetPendingFriendsProps, "getPendingFriendsActor");
 
-            /*MessagingCenter.Subscribe<GetPendingFriends, List<string>>(this, "hasFriends", (sender, arg) =>
+            Props ConfirmFriendRequestProps = Props.Create<ConfirmFriendRequest>();
+            confirmFriendRequestActor = ActorPrimus.MainActorSystem.ActorOf(ConfirmFriendRequestProps, "confirmFriendRequestActor");
+
+            MessagingCenter.Subscribe<GetPendingFriends, List<string>>(this, "hasFriends", (sender, arg) =>
             {
                 Console.WriteLine("************************************************************MessagingCenter has friends");
                 // if the list has at least one value
@@ -43,28 +51,36 @@ namespace Mobile_Locator_App.Xaml
 
             MessagingCenter.Subscribe<GetPendingFriends, List<string>>(this, "hasNoFriends", (sender, arg) =>
             {
-                Console.WriteLine("************************************************************MessagingCenter hasNoFriends");
+                Console.WriteLine("*************************************************************MessagingCenter hasNoFriends");
                 noFriendList();
             });
-
-            getFriends();*/
-
+            FriendListView.ItemsSource = PendingFriendCollection;
+            getFriends();
 
         }
 
-        /*private void getFriends()
+        void InitializePageDesign() // to set the elements on the Log in page to the colours set in the Constants Class
+        {
+            BackgroundColor = Constants.BackgroundColour;
+        }
+
+        private void getFriends()
         {
             Console.WriteLine("************************************************************getFriends");
 
             Console.WriteLine("**********************************************************getFriends after");
-            ActorPrimus.DBSupervisorActor.Tell(new DBSupervisor.GetFriendsCommand(getPendingFriendsActor));
+            ActorPrimus.DBSupervisorActor.Tell(new DBSupervisor.GetPendingFriendsCommand(getPendingFriendsActor));
         }
 
         public void loadFriends(List<string> Friends)
         {
             // load the list of friends onto the listview
             Console.WriteLine("**********************************************************loadFriends");
-            FriendListView.ItemsSource = Friends;
+            for (int i = 0; i < Friends.Count; i++)
+            {
+                PendingFriendCollection.Add(Friends[i]);
+            }
+            FriendListView.ItemsSource = PendingFriendCollection;
         }
 
         public void noFriends()
@@ -77,7 +93,7 @@ namespace Mobile_Locator_App.Xaml
         public void noFriendList()
         {
             FriendListView.ItemsSource = new string[] { "No pending requests found" };
-        }*/
+        }
 
         // place a button or an onclick event on the listview for each username displayed
         // on this click call the function that calls the ConfirmFriendRequest actor passing
@@ -104,6 +120,29 @@ namespace Mobile_Locator_App.Xaml
         private void Button_Exit_Clicked(object sender, EventArgs e)
         {
             NavigationCode.ExitApp();
+        }
+
+        private async void FriendListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            // ask for confirmation onclick on a username in the pending friends listview
+            
+            var answer = await DisplayAlert("Alert", "Are you sure you want to accept the friend request of " + FriendListView.SelectedItem.ToString(), "Yes", "No");
+
+            // if yes was clicked
+            if(answer)
+            {
+                ActorPrimus.DBSupervisorActor.Tell(new DBSupervisor.ConfirmFriendRequestCommand(confirmFriendRequestActor, FriendListView.SelectedItem.ToString()));
+                DisplayAlert("Success", FriendListView.SelectedItem.ToString() + " has been added as a friend", "OK");
+
+                PendingFriendCollection.Remove(FriendListView.SelectedItem.ToString());
+                
+                
+
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }
