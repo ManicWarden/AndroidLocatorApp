@@ -37,7 +37,7 @@ namespace Mobile_Locator_App.Database
             }
             else
             {
-                Console.WriteLine("**********************************************************DBSupervisor.RedisDB.KeyExists(User.Username + Friends) not found ");
+                Console.WriteLine("**********************************************************DBSupervisor.RedisDB.KeyExists(User.Username + PendingFriends) not found ");
                 // if a friends list is not found
                 MessagingCenter.Send<GetPendingFriends>(this, "hasNoFriends");
             }

@@ -49,7 +49,7 @@
 
                     <StackLayout x:Name="BottomButtons" VerticalOptions="FillAndExpand" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                         <!--For the Buttons at the bottom of the page-->
-                        <Button x:Name="Button_Exit" Text="Exit" Clicked="Button_Exit_Clicked"/>
+                        <Button x:Name="Button_Exit" Text="ExitAddFriends" Clicked="Button_Exit_Clicked"/>
                         <Button x:Name="Button_Submit" Text="Submit" Clicked="Button_Submit_Clicked"/>
                     </StackLayout>
 

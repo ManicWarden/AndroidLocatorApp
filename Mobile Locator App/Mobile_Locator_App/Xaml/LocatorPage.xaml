@@ -48,7 +48,7 @@
                     </Grid>
                     <StackLayout x:Name="BottomButtons" VerticalOptions="FillAndExpand" Orientation="Horizontal">
                         <!--For the Buttons at the bottom of the page-->
-                        <Button x:Name="Button_Exit" Text="Exit" Clicked="Button_Exit_Clicked"/>
+                        <Button x:Name="Button_Exit" Text="ExitLocator" Clicked="Button_Exit_Clicked"/>
                     </StackLayout>
 
                 </StackLayout>
