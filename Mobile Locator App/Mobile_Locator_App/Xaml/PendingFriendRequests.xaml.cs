@@ -27,7 +27,7 @@ namespace Mobile_Locator_App.Xaml
             Props GetPendingFriendsProps = Props.Create<GetPendingFriends>();
             getPendingFriendsActor = ActorPrimus.MainActorSystem.ActorOf(GetPendingFriendsProps, "getPendingFriendsActor");
 
-            MessagingCenter.Subscribe<GetPendingFriends, List<string>>(this, "hasFriends", (sender, arg) =>
+            /*MessagingCenter.Subscribe<GetPendingFriends, List<string>>(this, "hasFriends", (sender, arg) =>
             {
                 Console.WriteLine("************************************************************MessagingCenter has friends");
                 // if the list has at least one value
@@ -47,12 +47,12 @@ namespace Mobile_Locator_App.Xaml
                 noFriendList();
             });
 
-            getFriends();
+            getFriends();*/
 
 
         }
 
-        private void getFriends()
+        /*private void getFriends()
         {
             Console.WriteLine("************************************************************getFriends");
 
@@ -77,7 +77,7 @@ namespace Mobile_Locator_App.Xaml
         public void noFriendList()
         {
             FriendListView.ItemsSource = new string[] { "No pending requests found" };
-        }
+        }*/
 
         // place a button or an onclick event on the listview for each username displayed
         // on this click call the function that calls the ConfirmFriendRequest actor passing

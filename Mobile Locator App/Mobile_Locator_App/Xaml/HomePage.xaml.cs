@@ -29,7 +29,7 @@ namespace Mobile_Locator_App.Xaml
 
             MessagingCenter.Subscribe<GetFriends, List<string>>(this, "hasFriends", (sender, arg) =>
             {
-                Console.WriteLine("************************************************************MessagingCenter has friends");
+                Console.WriteLine("*************************************************************MessagingCenter has friends");
                 // if the list has at least one value
                 if (arg.Count > 0)
                 {
@@ -46,8 +46,8 @@ namespace Mobile_Locator_App.Xaml
                 Console.WriteLine("************************************************************MessagingCenter hasNoFriends");
                 noFriendList();
             });
-
             getFriends();
+
         }
 
         void InitializePageDesign() // to set the elements on the Log in page to the colours set in the Constants Class
@@ -56,6 +56,8 @@ namespace Mobile_Locator_App.Xaml
             // call GetFriends to populate the listview
             
             DisplayAlert("Username", "Current user is " + User.Username, "OK");
+            //FriendListView.ItemsSource = new string[] { "" };
+
         }
 
         private void getFriends()
@@ -89,7 +91,9 @@ namespace Mobile_Locator_App.Xaml
         {
             // load the list of friends onto the listview
             Console.WriteLine("**********************************************************loadFriends");
+            //DisplayAlert("Test", "The value Friends is: " + Friends.ToString(), "OK");
             FriendListView.ItemsSource = Friends;
+            Console.WriteLine("**********************************************************loadFriends After");
         }
 
         public void noFriends()
