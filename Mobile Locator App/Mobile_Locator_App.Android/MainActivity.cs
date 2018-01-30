@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Mobile_Locator_App.Code;
 
 namespace Mobile_Locator_App.Droid
 {
@@ -15,9 +16,15 @@ namespace Mobile_Locator_App.Droid
 		protected override void OnCreate (Bundle bundle)
 		{
 			TabLayoutResource = Resource.Layout.Tabbar;
-			ToolbarResource = Resource.Layout.Toolbar; 
+			ToolbarResource = Resource.Layout.Toolbar;
 
-			base.OnCreate (bundle);
+            GetLocationActor getLocationActor = new GetLocationActor(this); // initialises the getLocationActor and passes the current context
+
+            
+            //Location location = getLocationActor.getLocation();
+            
+
+            base.OnCreate (bundle);
 
 			global::Xamarin.Forms.Forms.Init (this, bundle);
 			LoadApplication (new Mobile_Locator_App.App ());

@@ -5,8 +5,14 @@ using Akka.Actor;
 
 namespace Mobile_Locator_App.Code
 {
-    class SetLocationActor : ReceiveActor
+    class SetLocationActor : UntypedActor
     {
+
+
+        private readonly IActorRef _setLocationActor;
+        private readonly double _longitude;
+        private readonly double _latitude;
+
         // use this to get users current location and send it to the server every x minutes/seconds
         // e.g. someMessage = getUserLocation
         // then pass someMessage to the actor that will update the database
@@ -21,5 +27,21 @@ namespace Mobile_Locator_App.Code
         TimeSpan.FromMinutes(30), // recur every 30 minutes
         someActor, someMessage, ActorRefs.Nobody);
  * */
+
+        public SetLocationActor(IActorRef setLocationActor, double Longitude, double Latitude)
+        {
+            _setLocationActor = setLocationActor;
+            _longitude = Longitude;
+            _latitude = Latitude;
+        }
+
+        private void setLocation()
+        {
+
+        }
+        protected override void OnReceive(object message)
+        {
+            
+        }
     }
 }

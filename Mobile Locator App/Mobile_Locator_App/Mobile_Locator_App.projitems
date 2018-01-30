@@ -14,10 +14,10 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Code\ActorPrimus.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Code\Constants.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Code\GetLocationActor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Database\GetLocationActor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Code\Navigation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Code\NavigationActor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Code\SetLocationActor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Database\SetLocationActor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Code\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Code\ValidationActor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\AddFriend.cs" />
