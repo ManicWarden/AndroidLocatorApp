@@ -5,6 +5,10 @@
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
   <application android:label="Mobile_Locator_App.Android" android:name="android.app.Application" android:allowBackup="true" android:icon="@drawable/icon" android:debuggable="true">
     <activity android:configChanges="orientation|screenSize" android:icon="@drawable/icon" android:label="Mobile_Locator_App" android:theme="@style/MainTheme" android:name="md598ba78ba1bb77f9c2cc70f0a4ea607c5.MainActivity">
       <intent-filter>

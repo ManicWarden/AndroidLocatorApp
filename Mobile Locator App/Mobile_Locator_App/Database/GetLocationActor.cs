@@ -13,53 +13,52 @@ using Mobile_Locator_App.Droid;
 namespace Mobile_Locator_App.Code
 {
     [Activity(Label = "CurrentLocation", MainLauncher = true, Icon = "@drawable/icon")]
-    class GetLocationActor : UntypedActor, ILocationListener
+    class GetLocationActor : UntypedActor
     {
 
 
         private readonly IActorRef _getLocationActor;
-        private readonly double _longitude;
-        private readonly double _latitude;
-        private readonly Context mContext;
-        Location currentLocation;
-        LocationManager locationManager;
+
+
+        
 
         public IntPtr Handle => throw new NotImplementedException();
 
-        /*public GetLocationActor(IActorRef getLocationActor)
+        public GetLocationActor(IActorRef getLocationActor)
         {
 
             _getLocationActor = getLocationActor;
-            _longitude = Longitude;
-            _latitude = Latitude;
-            InitialiseLocationManager();
-        }*/
 
-        public GetLocationActor(Context mContext)
+        }
+
+
+
+        protected override void OnReceive(object message){}
+
+ 
+    }
+
+    class getLocation : Java.Lang.Object, ILocationListener
+    {
+        Location currentLocation;
+        LocationManager locationManager;
+        private readonly Context mContext;
+
+        //public IntPtr Handle => throw new NotImplementedException();
+
+        public getLocation(Context mContext)
         {
             this.mContext = mContext;
+            InitialiseLocationManager();
         }
 
         private void InitialiseLocationManager()
         {
             locationManager = (LocationManager)Android.App.Application.Context.GetSystemService(Context.LocationService);
-            locationManager = (LocationManager)MainActivity.activity.GetSystemService(Context.LocationService);
-
-
-
-
-
+            //locationManager = (LocationManager)MainActivity.activity.GetSystemService(Context.LocationService);
         }
 
-        private void getLocation()
-        {
 
-        }
-
-        protected override void OnReceive(object message)
-        {
-
-        }
 
         public void OnLocationChanged(Location location)
         {
@@ -85,5 +84,6 @@ namespace Mobile_Locator_App.Code
         {
             throw new NotImplementedException();
         }
+
     }
 }

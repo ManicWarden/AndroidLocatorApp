@@ -1,3 +1,7 @@
+Mobile_Locator_App.Code.getLocation, Mobile_Locator_App.Android;md5060949fec5f2e9603fa8d9b9e2eb4324.getLocation
+Mobile_Locator_App.Code.getLocation, Mobile_Locator_App.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5060949fec5f2e9603fa8d9b9e2eb4324.getLocation
+Mobile_Locator_App.Code.getLocation;md5060949fec5f2e9603fa8d9b9e2eb4324.getLocation
+mobile_locator_app.code.getLocation;md5060949fec5f2e9603fa8d9b9e2eb4324.getLocation
 Mobile_Locator_App.Droid.MainActivity, Mobile_Locator_App.Android;md598ba78ba1bb77f9c2cc70f0a4ea607c5.MainActivity
 Mobile_Locator_App.Droid.MainActivity, Mobile_Locator_App.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md598ba78ba1bb77f9c2cc70f0a4ea607c5.MainActivity
 Mobile_Locator_App.Droid.MainActivity;md598ba78ba1bb77f9c2cc70f0a4ea607c5.MainActivity
