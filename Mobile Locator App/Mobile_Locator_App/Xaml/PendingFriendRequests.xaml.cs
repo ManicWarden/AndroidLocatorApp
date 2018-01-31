@@ -37,7 +37,7 @@ namespace Mobile_Locator_App.Xaml
 
             MessagingCenter.Subscribe<GetPendingFriends, List<string>>(this, "hasFriends", (sender, arg) =>
             {
-                Console.WriteLine("************************************************************MessagingCenter has friends");
+                Console.WriteLine("**************************************************************MessagingCenter has friends");
                 // if the list has at least one value
                 if (arg.Count > 0)
                 {
