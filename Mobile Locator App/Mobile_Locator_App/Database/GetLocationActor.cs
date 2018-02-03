@@ -9,6 +9,8 @@ using Android.Runtime;
 using Android.App;
 using Android.Content;
 using Mobile_Locator_App.Droid;
+using System.Linq;
+using Xamarin.Forms;
 
 namespace Mobile_Locator_App.Code
 {
@@ -24,11 +26,12 @@ namespace Mobile_Locator_App.Code
 
         public IntPtr Handle => throw new NotImplementedException();
 
-        public GetLocationActor(IActorRef getLocationActor)
+        public GetLocationActor(/*IActorRef getLocationActor*/ Context mContext)
         {
 
-            _getLocationActor = getLocationActor;
-
+            //_getLocationActor = getLocationActor;
+            getLocation GetLocation = new getLocation(mContext);
+            GetLocation.findLocation();
         }
 
 
@@ -43,7 +46,7 @@ namespace Mobile_Locator_App.Code
         Location currentLocation;
         LocationManager locationManager;
         private readonly Context mContext;
-
+        string locationProvider;
         //public IntPtr Handle => throw new NotImplementedException();
 
         public getLocation(Context mContext)
@@ -55,14 +58,46 @@ namespace Mobile_Locator_App.Code
         private void InitialiseLocationManager()
         {
             locationManager = (LocationManager)Android.App.Application.Context.GetSystemService(Context.LocationService);
+            Criteria criteriaForLocationService = new Criteria
+            {
+                Accuracy = Accuracy.Fine
+            };
+
+            IList<string> acceptableLocationProviders = locationManager.GetProviders(criteriaForLocationService, true);
+
+            if(acceptableLocationProviders.Any())
+            {
+                locationProvider = acceptableLocationProviders.First();
+            }
+            else
+            {
+                locationProvider = string.Empty;
+            }
+            Console.WriteLine("*************************************** Location Provider = " + locationProvider);
             //locationManager = (LocationManager)MainActivity.activity.GetSystemService(Context.LocationService);
         }
 
+        public void findLocation()
+        {
+            locationManager.RequestLocationUpdates(locationProvider, 0, 0, this);
+            
+            
+        }
 
+        public void Stop()
+        {
+            locationManager.RemoveUpdates(this);
+        }
+        
+        private void OnResume()
+        {
+
+        }
 
         public void OnLocationChanged(Location location)
         {
-            throw new NotImplementedException();
+            MessagingCenter.Send<GetPendingFriends, List<string>>(this, "latitude", currentLocation);
+            
         }
 
         public void OnProviderDisabled(string provider)

@@ -20,8 +20,9 @@ namespace Mobile_Locator_App.Droid
 			TabLayoutResource = Resource.Layout.Tabbar;
 			ToolbarResource = Resource.Layout.Toolbar;
 
-            //GetLocationActor getLocationActor = new GetLocationActor(this); 
-            getLocation GetLocation = new getLocation(this);// initialises the getLocationActor and passes the current context
+            // calling an actor that will in turn call a class that can retrieve the users current location on a seperate thread
+            GetLocationActor getLocationActor = new GetLocationActor(this); 
+            //getLocation GetLocation = new getLocation(this);// initialises the getLocationActor and passes the current context
 
 
             //Location location = getLocationActor.getLocation();
