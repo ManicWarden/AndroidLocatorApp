@@ -15,7 +15,7 @@ using Xamarin.Forms;
 namespace Mobile_Locator_App.Code
 {
     [Activity(Label = "CurrentLocation", MainLauncher = true, Icon = "@drawable/icon")]
-    class GetLocationActor : UntypedActor
+    public class GetLocationActor : UntypedActor
     {
 
 
@@ -26,28 +26,61 @@ namespace Mobile_Locator_App.Code
 
         public IntPtr Handle => throw new NotImplementedException();
 
-        public GetLocationActor(/*IActorRef getLocationActor*/ Context mContext)
+        public GetLocationActor(IActorRef getLocationActor, Context mContext)
+        {
+            Console.WriteLine("*******************************************GetLocationActor");
+            //_getLocationActor = getLocationActor;
+            getLocation GetLocation = new getLocation(mContext);
+            GetLocation.findLocation();
+        }
+
+        private void test()
         {
 
+        }
+
+        public void testw()
+        {
+
+        }
+
+        public void Initiliase(Context mContext)
+        {
+            Console.WriteLine("*******************************************GetLocationActor Initiliase");
             //_getLocationActor = getLocationActor;
             getLocation GetLocation = new getLocation(mContext);
             GetLocation.findLocation();
         }
 
 
+        protected override void OnReceive(object message)
+        {
+            Console.WriteLine("**********************************OnRecieve getLocationActor");
+        }
 
-        protected override void OnReceive(object message){}
+        internal class Initialise
+        {
+            private Activity activity;
 
- 
+            public Initialise(Activity activity)
+            {
+                this.activity = activity;
+                Console.WriteLine("*******************************************GetLocationActor Initiliase");
+                getLocation GetLocation = new getLocation(activity);
+                GetLocation.findLocation();
+            }
+        }
     }
 
-    class getLocation : Java.Lang.Object, ILocationListener
+    public class getLocation : Java.Lang.Object, ILocationListener
     {
         Location currentLocation;
         LocationManager locationManager;
         private readonly Context mContext;
         string locationProvider;
         //public IntPtr Handle => throw new NotImplementedException();
+
+
 
         public getLocation(Context mContext)
         {
@@ -89,35 +122,53 @@ namespace Mobile_Locator_App.Code
             locationManager.RemoveUpdates(this);
         }
         
-        private void OnResume()
-        {
-
-        }
 
         public void OnLocationChanged(Location location)
         {
-            MessagingCenter.Send<GetPendingFriends, List<string>>(this, "latitude", currentLocation);
+            string latitude = location.Latitude.ToString();
+            string longitude = location.Longitude.ToString();
+            string[] locationValues = { longitude, latitude };
+            // if the location is found to be changed by some magical genie who keeps track of all this then
+            // this method will run, then the longitude and latitude of the newly changed location data will be stored
+            // in a string array which will then be passed stored on the server
+            if (string.IsNullOrEmpty(latitude) || string.IsNullOrEmpty(longitude))
+            {
+
+                MessagingCenter.Send<getLocation, string[]>(this, "Mobius", locationValues);
+            }
+            else
+            {
+                Database.DBSupervisor.RedisDB.StringSet(User.Username + "Longtitude", longitude);
+                Database.DBSupervisor.RedisDB.StringSet(User.Username + "Latitude", latitude);
+                MessagingCenter.Send<getLocation, string[]>(this, "gotLocation", locationValues);
+            }
+            
+            
+            
             
         }
 
+
+
+
         public void OnProviderDisabled(string provider)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("***OnProviderDisabled");
         }
 
         public void OnProviderEnabled(string provider)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("***OnProviderEnabled");
         }
 
         public void OnStatusChanged(string provider, [GeneratedEnum] Availability status, Bundle extras)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("***OnStatusChanged");
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("***Dispose"); ;
         }
 
     }

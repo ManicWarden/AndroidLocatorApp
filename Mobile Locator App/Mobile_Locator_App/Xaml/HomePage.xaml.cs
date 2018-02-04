@@ -16,6 +16,7 @@ namespace Mobile_Locator_App.Xaml
 	public partial class HomePage : ContentPage
 	{
         private readonly IActorRef getFriendsActor;
+        private readonly IActorRef getLocationActor;
         private ObservableCollection<string> FriendCollection = new ObservableCollection<string>();
 
 
@@ -30,6 +31,42 @@ namespace Mobile_Locator_App.Xaml
             Props getFriendProps = Props.Create<GetFriends>();
             getFriendsActor = ActorPrimus.MainActorSystem.ActorOf(getFriendProps, "getFriendsActor");
 
+            Props getLocationProps = Props.Create<GetLocationActor>();
+            getLocationActor = ActorPrimus.MainActorSystem.ActorOf(getLocationProps, "getLocationActor");
+            
+
+            // sends the context of the application to the GetLocationActor which will in turn 
+            // call the getlocation functionality of the getLocation class
+
+
+            FriendListView.ItemsSource = FriendCollection;
+            InitialiseMessagingCenters();
+            getFriends();
+            Console.WriteLine("************************************************** Calling GetLocationActor");
+            
+            ActorPrimus.MainActorSystem.ActorOf(Props.Create(
+                () => new GetLocationActor(getLocationActor, Droid.MainActivity.activity)));
+
+
+            //ActorPrimus.GetLocationActor.Tell(new GetLocationActor(getLocationActor, Droid.MainActivity.activity));
+            Console.WriteLine("**************************************************After Calling GetLocationActor");
+
+
+        }
+
+        void InitializePageDesign() // to set the elements on the page to the colours set in the Constants Class
+        {
+            BackgroundColor = Constants.BackgroundColour;
+            // call GetFriends to populate the listview
+            
+            DisplayAlert("Username", "Current user is " + User.Username, "OK");
+            //FriendListView.ItemsSource = new string[] { "" };
+
+        }
+        #region MessagingCenters
+        private void InitialiseMessagingCenters()
+        {
+            /******************** Retrieving the users friends *************************/
             MessagingCenter.Subscribe<GetFriends, List<string>>(this, "hasFriends", (sender, arg) =>
             {
                 Console.WriteLine("*************************************************************MessagingCenter has friends");
@@ -49,46 +86,43 @@ namespace Mobile_Locator_App.Xaml
                 Console.WriteLine("************************************************************MessagingCenter hasNoFriends");
                 noFriendList();
             });
-            FriendListView.ItemsSource = FriendCollection;
-            getFriends();
 
+            /******************** Retrieving users current location***********************/
+
+            MessagingCenter.Subscribe<getLocation, string[]>(this, "gotLocation", (sender, arg) =>
+            {
+                Console.WriteLine("************************************************************Users Location has been retrieved");
+                gotLocation(arg);
+
+
+            });
+
+            MessagingCenter.Subscribe<getLocation, string[]>(this, "Mobius", (sender, arg) =>
+            {
+                 Console.WriteLine("************************************************************Location has not been found");
+                noLocation();
+            });
         }
+        #endregion
 
-        void InitializePageDesign() // to set the elements on the page to the colours set in the Constants Class
+        private void gotLocation(string[] location)
         {
-            BackgroundColor = Constants.BackgroundColour;
-            // call GetFriends to populate the listview
-            
-            DisplayAlert("Username", "Current user is " + User.Username, "OK");
-            //FriendListView.ItemsSource = new string[] { "" };
-
+            DisplayAlert("Alert", "Location has been found. Longitude: " + location[0] + " Latitude: " + location[1], "OK");
         }
 
+        private void noLocation()
+        {
+            DisplayAlert("Alert", "No location has been found, and so the slog begins.", "OK");
+        }
         private void getFriends()
         {
-            Console.WriteLine("************************************************************getFriends");
-            //RetrieveFriends retrieveFriends = new RetrieveFriends();
-            
-
-            
 
             Console.WriteLine("**********************************************************getFriends after");
             ActorPrimus.DBSupervisorActor.Tell(new DBSupervisor.GetFriendsCommand(getFriendsActor));
-            
+            getLocationActor.Tell(new GetLocationActor.Initialise(Droid.MainActivity.activity));
 
+            //ActorPrimus.GetLocationActor.Tell(new GetLocationActor.)
 
-
-            // use an actor to get the users friends in a list
-            // which will then be used to populate the listview
-
-            //Find way to make username a public constant when the user has signed in or registered
-            //DatabaseActions.GetFriends();
-            // a list will be returned containing the usernames of the friends, and maybe the first and second names in different lists
-            // assign said list/s to the listview FriendListView
-            /*
-            items = new string[] { "Vegetables", "Fruits", "Flower Buds", "Legumes", "Bulbs", "Tubers" };
-            ListAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleListItem1, items);
-            */
         }
 
         public void loadFriends(List<string> Friends)

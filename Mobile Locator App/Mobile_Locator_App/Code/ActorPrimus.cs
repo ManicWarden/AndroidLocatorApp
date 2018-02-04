@@ -12,16 +12,21 @@ namespace Mobile_Locator_App.Code
     {
         public static ActorSystem MainActorSystem;
         public static IActorRef DBSupervisorActor;
+        public static IActorRef GetLocationActor;
+
         /// <summary>
         /// Initialise some of the actors that will be used in the system and create references to said actors
         /// </summary>
-         public static void Initialise()
+        public static void Initialise()
         {
             MainActorSystem = ActorSystem.Create("MainActorSystem");
 
 
             Props dbSupervisorProps = Props.Create<DBSupervisor>();
             DBSupervisorActor = MainActorSystem.ActorOf(dbSupervisorProps, "DBSupervisorActor");
+
+            Props getLocationProps = Props.Create<GetLocationActor>();
+            GetLocationActor = MainActorSystem.ActorOf(getLocationProps, "GetLocationActor");
 
         }
         /*static void Main(string[] args)

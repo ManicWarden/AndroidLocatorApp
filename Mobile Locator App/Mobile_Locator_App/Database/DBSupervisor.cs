@@ -129,13 +129,15 @@ namespace Mobile_Locator_App.Database
             public IActorRef GetPendingFriendsActor { get; private set; }
         }
 
+        
+
         #endregion
 
         protected override void OnReceive(object message)
         {
             // creating a parent/child relationship between the created 
             // Actor instance and the DBSupervisor
-            Console.WriteLine("*****************************************On Receive");
+            Console.WriteLine("*****************************************On Receive DBSupervisor");
             if (message is CreateUserCommand)
             {
                 Console.WriteLine("*****************************************CreateUserCommand triggered");
