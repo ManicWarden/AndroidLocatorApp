@@ -106,8 +106,9 @@ namespace Mobile_Locator_App.Code
             {
                 locationProvider = string.Empty;
             }
-            Console.WriteLine("*************************************** Location Provider = " + locationProvider);
+
             //locationManager = (LocationManager)MainActivity.activity.GetSystemService(Context.LocationService);
+            Console.WriteLine("***************************************** Location Provider = " + locationProvider);
         }
 
         public void findLocation()

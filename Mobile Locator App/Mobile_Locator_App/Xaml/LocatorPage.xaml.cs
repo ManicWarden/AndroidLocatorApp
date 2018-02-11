@@ -54,15 +54,20 @@ namespace Mobile_Locator_App.Xaml
             NavigationCode.ExitApp();
         }
     }
-
-    public class MapActivity : Activity, IOnMapReadyCallback
+    
+    public class MapActivity : /*Activity*/ Java.Lang.Throwable, IOnMapReadyCallback
     {
         // A fragment that acts as part of the page that will contain the GoogleMap object
         
         private GoogleMap _map;
 
+       /* public MapActivity()
+        {
+            InitiliaseMapFragment();
+        }
+
         // no method found to override
-        public void OnCreate()
+        public void InitiliaseMapFragment()
         {
             MapFragment _mapFragment = FragmentManager.FindFragmentByTag("map") as MapFragment;
 
@@ -75,6 +80,7 @@ namespace Mobile_Locator_App.Xaml
             {
                 _map.UiSettings.ZoomControlsEnabled = true;
                 _map.UiSettings.CompassEnabled = true;
+                _map.MapType = GoogleMap.MapTypeHybrid; // should take longer to load than normal or terrain but not as long as satellite
             }
 
             // the way below changes the settings on creation of the mapFragment
@@ -94,12 +100,12 @@ namespace Mobile_Locator_App.Xaml
                 // So call works as (integer ID, Fragment fragment, string tag)
                 // Therefore ResourceDesigner now contains public static int map { get;  set; } at line 2692
                 // No idea if it will work or not, though this being here either means it works or it hasnt
-                // been run yet
+                // been run yet.
                 fragTx.Add(Droid.Resource.Id.map, _mapFragment, "map");
                 fragTx.Commit();
             }
             _mapFragment.GetMapAsync(this);*/
-        }
+        //}
 
         public void OnMapReady(GoogleMap map)
         {
