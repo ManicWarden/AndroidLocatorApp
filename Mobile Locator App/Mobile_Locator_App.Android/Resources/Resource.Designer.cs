@@ -9,6 +9,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using Android.App;
+
 [assembly: global::Android.Runtime.ResourceDesignerAttribute("Mobile_Locator_App.Droid.Resource", IsApplication=true)]
 
 namespace Mobile_Locator_App.Droid
@@ -2686,7 +2688,9 @@ namespace Mobile_Locator_App.Droid
 			private Id()
 			{
 			}
-		}
+
+            public static int map { get;  set; }
+        }
 		
 		public partial class Integer
 		{

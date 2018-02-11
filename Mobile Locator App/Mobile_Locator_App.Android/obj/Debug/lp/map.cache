@@ -16,3 +16,13 @@ Xamarin.Forms.Core
 Xamarin.Forms.Platform.Android
 Xamarin.Forms.Platform
 Xamarin.Forms.Xaml
+Xamarin.Android.Support.Annotations
+Xamarin.Android.Support.Compat
+Xamarin.Android.Support.Core.UI
+Xamarin.Android.Support.Core.Utils
+Xamarin.Android.Support.Media.Compat
+Xamarin.Android.Support.Fragment
+Xamarin.GooglePlayServices.Basement
+Xamarin.GooglePlayServices.Tasks
+Xamarin.GooglePlayServices.Base
+Xamarin.GooglePlayServices.Maps

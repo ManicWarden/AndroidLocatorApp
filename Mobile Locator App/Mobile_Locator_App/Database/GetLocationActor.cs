@@ -128,9 +128,9 @@ namespace Mobile_Locator_App.Code
             string latitude = location.Latitude.ToString();
             string longitude = location.Longitude.ToString();
             string[] locationValues = { longitude, latitude };
-            // if the location is found to be changed by some magical genie who keeps track of all this then
+            // If the location is found to be changed by some magical genie who keeps track of all this then
             // this method will run, then the longitude and latitude of the newly changed location data will be stored
-            // in a string array which will then be passed stored on the server
+            // in a string array which will then be passed stored on the server.
             if (string.IsNullOrEmpty(latitude) || string.IsNullOrEmpty(longitude))
             {
 
