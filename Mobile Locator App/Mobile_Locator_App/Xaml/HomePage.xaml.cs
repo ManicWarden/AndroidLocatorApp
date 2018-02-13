@@ -91,7 +91,7 @@ namespace Mobile_Locator_App.Xaml
 
             MessagingCenter.Subscribe<getLocation, string[]>(this, "gotLocation", (sender, arg) =>
             {
-                Console.WriteLine("************************************************************Users Location has been retrieved");
+                Console.WriteLine("************************************************************Users Location has been retrieved.");
                 gotLocation(arg);
 
 
@@ -99,7 +99,7 @@ namespace Mobile_Locator_App.Xaml
 
             MessagingCenter.Subscribe<getLocation, string[]>(this, "Mobius", (sender, arg) =>
             {
-                 Console.WriteLine("*************************************************************Location has not been found");
+                 Console.WriteLine("*************************************************************Location has not been found.");
                 noLocation();
             });
         }

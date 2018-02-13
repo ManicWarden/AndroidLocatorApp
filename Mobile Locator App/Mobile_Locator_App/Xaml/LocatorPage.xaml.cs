@@ -26,6 +26,8 @@ namespace Mobile_Locator_App.Xaml
             /*************************** ******************/
             //SHA1 Key:  38:F4:D1:37:DD:AC:5F:9A:50:52:11:8B:F4:1F:47:77:C8:46:A4:D2
             // Google Maps API Key: AIzaSyA0NaUhV_6er4i0t0nz_XPf0dwAkrAXlg4
+            /**************** USE NEW PACKAGE NAME TO CREATE A NEW GOOGLE MAPS API KEY 
+             * HAD TO CHANGE THE OLD NAME BECAUSE THE PROGRAM CANT HANDLE CAPITAL LETTERS************************/
         }
 
 
@@ -96,10 +98,10 @@ namespace Mobile_Locator_App.Xaml
                 FragmentTransaction fragTx = FragmentManager.BeginTransaction();
                 _mapFragment = MapFragment.NewInstance(mapOptions);
                 // in order to fix the problem below I think a property needs to be 
-                // created so that map can be added in Resource.Designer
+                // created so that map can be added in Resource.Designer 
                 // So call works as (integer ID, Fragment fragment, string tag)
                 // Therefore ResourceDesigner now contains public static int map { get;  set; } at line 2692
-                // No idea if it will work or not, though this being here either means it works or it hasnt
+                // No idea if it will work or not, though this being here either means it works or it hasnt 
                 // been run yet.
                 fragTx.Add(Droid.Resource.Id.map, _mapFragment, "map");
                 fragTx.Commit();
