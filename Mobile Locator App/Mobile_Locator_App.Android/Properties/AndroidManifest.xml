@@ -27,7 +27,7 @@
 
 	<application android:label="Mobile_Locator_App.Android">
     <!-- Google Maps V2 API Key-->
-    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyA0NaUhV_6er4i0t0nz_XPf0dwAkrAXlg4" />
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyA3e08LCuZ3Rb7_5DWIklwxN87jyu_4lxY" />
     <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
   </application>
 </manifest>

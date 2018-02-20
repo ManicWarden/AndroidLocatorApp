@@ -22,7 +22,7 @@
   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
   <application android:label="Mobile_Locator_App.Android" android:name="android.support.multidex.MultiDexApplication" android:allowBackup="true" android:icon="@drawable/icon" android:debuggable="true">
     <!-- Google Maps V2 API Key-->
-    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyA0NaUhV_6er4i0t0nz_XPf0dwAkrAXlg4" />
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyA3e08LCuZ3Rb7_5DWIklwxN87jyu_4lxY" />
     <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
     <activity android:configChanges="orientation|screenSize" android:icon="@drawable/icon" android:label="Mobile_Locator_App" android:theme="@style/MainTheme" android:name="md598ba78ba1bb77f9c2cc70f0a4ea607c5.MainActivity">
       <intent-filter>

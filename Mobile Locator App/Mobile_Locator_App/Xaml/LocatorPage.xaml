@@ -40,12 +40,7 @@
 
 
                     </StackLayout.Padding>
-                    <Grid>
-                        <ListView x:Name="FriendListView" BackgroundColor="Azure" Margin="10" >
 
-
-                        </ListView>
-                    </Grid>
                     <StackLayout x:Name="BottomButtons" VerticalOptions="FillAndExpand" Orientation="Horizontal">
                         <!--For the Buttons at the bottom of the page-->
                         <Button x:Name="Button_Exit" Text="ExitLocator" Clicked="Button_Exit_Clicked"/>
