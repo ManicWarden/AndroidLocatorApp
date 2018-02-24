@@ -1,11 +1,7 @@
-Mobile_Locator_App.Xaml.LocatorPage/InitiliaseMapFragment, Mobile_Locator_App.Android;md5fde3fcffeaf25d3c967eae1f8631cfca.LocatorPage_InitiliaseMapFragment
-Mobile_Locator_App.Xaml.LocatorPage+InitiliaseMapFragment, Mobile_Locator_App.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5fde3fcffeaf25d3c967eae1f8631cfca.LocatorPage_InitiliaseMapFragment
-Mobile_Locator_App.Xaml.LocatorPage.InitiliaseMapFragment;md5fde3fcffeaf25d3c967eae1f8631cfca.LocatorPage_InitiliaseMapFragment
-mobile_locator_app.xaml.LocatorPage_InitiliaseMapFragment;md5fde3fcffeaf25d3c967eae1f8631cfca.LocatorPage_InitiliaseMapFragment
-Mobile_Locator_App.Xaml.MapActivity, Mobile_Locator_App.Android;md5fde3fcffeaf25d3c967eae1f8631cfca.MapActivity
-Mobile_Locator_App.Xaml.MapActivity, Mobile_Locator_App.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5fde3fcffeaf25d3c967eae1f8631cfca.MapActivity
-Mobile_Locator_App.Xaml.MapActivity;md5fde3fcffeaf25d3c967eae1f8631cfca.MapActivity
-mobile_locator_app.xaml.MapActivity;md5fde3fcffeaf25d3c967eae1f8631cfca.MapActivity
+Mobile_Locator_App.Xaml.oldLocation/InitiliaseMapFragment, Mobile_Locator_App.Android;md5fde3fcffeaf25d3c967eae1f8631cfca.oldLocation_InitiliaseMapFragment
+Mobile_Locator_App.Xaml.oldLocation+InitiliaseMapFragment, Mobile_Locator_App.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5fde3fcffeaf25d3c967eae1f8631cfca.oldLocation_InitiliaseMapFragment
+Mobile_Locator_App.Xaml.oldLocation.InitiliaseMapFragment;md5fde3fcffeaf25d3c967eae1f8631cfca.oldLocation_InitiliaseMapFragment
+mobile_locator_app.xaml.oldLocation_InitiliaseMapFragment;md5fde3fcffeaf25d3c967eae1f8631cfca.oldLocation_InitiliaseMapFragment
 Mobile_Locator_App.Code.getLocation, Mobile_Locator_App.Android;md5060949fec5f2e9603fa8d9b9e2eb4324.getLocation
 Mobile_Locator_App.Code.getLocation, Mobile_Locator_App.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5060949fec5f2e9603fa8d9b9e2eb4324.getLocation
 Mobile_Locator_App.Code.getLocation;md5060949fec5f2e9603fa8d9b9e2eb4324.getLocation
@@ -238,6 +234,10 @@ Android.Support.V7.Widget.RecyclerView/IRecyclerListenerImplementor, Xamarin.And
 Android.Support.V7.Widget.RecyclerView+IRecyclerListenerImplementor, Xamarin.Android.Support.v7.RecyclerView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.android.support.v7.widget.RecyclerView_RecyclerListenerImplementor
 Android.Support.V7.Widget.RecyclerView.IRecyclerListenerImplementor;mono.android.support.v7.widget.RecyclerView_RecyclerListenerImplementor
 mono.android.support.v7.widget.RecyclerView_RecyclerListenerImplementor;mono.android.support.v7.widget.RecyclerView_RecyclerListenerImplementor
+Xamarin.Forms.Maps.Android.MapRenderer, Xamarin.Forms.Maps.Android;md5d956392b2b421ac2c9ccfc063253dcd9.MapRenderer
+Xamarin.Forms.Maps.Android.MapRenderer, Xamarin.Forms.Maps.Android, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null;md5d956392b2b421ac2c9ccfc063253dcd9.MapRenderer
+Xamarin.Forms.Maps.Android.MapRenderer;md5d956392b2b421ac2c9ccfc063253dcd9.MapRenderer
+xamarin.forms.maps.android.MapRenderer;md5d956392b2b421ac2c9ccfc063253dcd9.MapRenderer
 Xamarin.Forms.Platform.Android.CellAdapter, Xamarin.Forms.Platform.Android;md5b60ffeb829f638581ab2bb9b1a7f4f3f.CellAdapter
 Xamarin.Forms.Platform.Android.CellAdapter, Xamarin.Forms.Platform.Android, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null;md5b60ffeb829f638581ab2bb9b1a7f4f3f.CellAdapter
 Xamarin.Forms.Platform.Android.CellAdapter;md5b60ffeb829f638581ab2bb9b1a7f4f3f.CellAdapter

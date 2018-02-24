@@ -6,6 +6,7 @@ using Android.Gms.Maps;
 using Mobile_Locator_App.Code;
 using Mobile_Locator_App.Droid;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 
 
@@ -18,13 +19,32 @@ namespace Mobile_Locator_App.Xaml
 
         public LocatorPage()
         {
+            
             InitializeComponent();
             InitializePageDesign();
-
+            InitMap();
+            
 
         }
 
-       
+       public void InitMap()
+        {
+            var map = new Map(
+                MapSpan.FromCenterAndRadius(
+                    new Position(37, -122), Distance.FromMiles(0.3)))
+            {
+                IsShowingUser = true,
+                HeightRequest = 100,
+                WidthRequest = 960,
+                VerticalOptions = LayoutOptions.FillAndExpand
+            };
+
+            // creating the area where the map will be placed on the page
+            var stack = new StackLayout { Spacing = 0 };
+            stack.Children.Add(map);
+            Content = stack;
+            
+        }
 
 
         void InitializePageDesign() // to set the elements on the Log in page to the colours set in the Constants Class
