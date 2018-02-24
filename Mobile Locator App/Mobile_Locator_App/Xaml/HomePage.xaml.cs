@@ -179,7 +179,20 @@ namespace Mobile_Locator_App.Xaml
             NavigationCode.ExitApp();
         }
 
-
+        private async void FriendListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var answer = await DisplayAlert("Alert", "Do you want to see the location of " + FriendListView.SelectedItem.ToString() + "?", "Yes", "No");
+            if (answer)
+            {
+                //User.addToFriendsToLocate(FriendListView.SelectedItem.ToString());
+                User.friendsToLocate.Add(FriendListView.SelectedItem.ToString());
+                await Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.LocatorPage());
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 
 }

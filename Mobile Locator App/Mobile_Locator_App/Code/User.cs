@@ -12,6 +12,7 @@ namespace Mobile_Locator_App.Code
         // will store the users location at a given time
         public static string Latitude { get; set; } 
         public static string Longitude { get; set; }
+        public static List<string> friendsToLocate = new List<string>();
         //public static int UserID { get; set; }
 
         public User() { } // for database manipulation later
@@ -38,6 +39,11 @@ namespace Mobile_Locator_App.Code
             else// if the username or password is empty (Therefore not filled in by the user on the log in page)
                 return false;
 
+        }
+
+        public static void addToFriendsToLocate(string username)
+        {
+            friendsToLocate.Add(username);
         }
     }
 }

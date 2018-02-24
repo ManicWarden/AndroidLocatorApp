@@ -132,7 +132,8 @@ namespace Mobile_Locator_App.Xaml
             if(answer)
             {
                 ActorPrimus.DBSupervisorActor.Tell(new DBSupervisor.ConfirmFriendRequestCommand(confirmFriendRequestActor, FriendListView.SelectedItem.ToString()));
-                DisplayAlert("Success", FriendListView.SelectedItem.ToString() + " has been added as a friend", "OK");
+
+                await DisplayAlert("Success", FriendListView.SelectedItem.ToString() + " has been added as a friend", "OK");
 
                 PendingFriendCollection.Remove(FriendListView.SelectedItem.ToString());
                 

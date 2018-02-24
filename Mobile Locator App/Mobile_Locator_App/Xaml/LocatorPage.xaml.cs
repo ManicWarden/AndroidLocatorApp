@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Linq;
 using Android.App;
 using Android.Gms.Maps;
 
@@ -19,7 +19,8 @@ namespace Mobile_Locator_App.Xaml
         private Map map;
         private double userLatitude = Convert.ToDouble(User.Latitude);
         private double userLongitude = Convert.ToDouble(User.Longitude);
-
+        private double latitude;
+        private double longitude;
         public LocatorPage()
         {
             
@@ -27,12 +28,40 @@ namespace Mobile_Locator_App.Xaml
             InitializePageDesign();
             InitMap();
 
-            //if the user has selected a friend to find
-            addPin();
+            // add the users current location to the map
+            addPin(User.Username, userLatitude, userLongitude);
+            //if the user has selected a friend to find 
+            if(User.friendsToLocate.Count > 0)
+            {
+                // find all friendsToLocate locations and add them as pins to the map
+                for (int i = 0; i < User.friendsToLocate.Count; i++)
+                {
+                    if (Database.DBSupervisor.RedisDB.KeyExists(User.friendsToLocate[i] + "Longtitude") &&
+                        Database.DBSupervisor.RedisDB.KeyExists(User.friendsToLocate[i] + "Latitude"))
+                    {
+
+                        double latitude = Convert.ToDouble(Database.DBSupervisor.RedisDB.StringGet(User.friendsToLocate[i] + "Latitude"));
+                        double longitude = Convert.ToDouble(Database.DBSupervisor.RedisDB.StringGet(User.friendsToLocate[i] + "Latitude"));
+                    }
+                    else
+                    {
+                        return;
+                    }
+                    // after the friends have been put on the map clear the list
+                    User.friendsToLocate.Clear();
+                    addPin(User.friendsToLocate[i], latitude, longitude);
+                } // end for loop
 
 
 
+            } // end if
+                
         }
+            
+
+
+
+        
 
         public void InitMap()
         {
@@ -62,16 +91,16 @@ namespace Mobile_Locator_App.Xaml
 
         }
 
-        public void addPin(/*FriendUsername, Latitude,Longtitude*/)
+        public void addPin(string Username, double Latitude, double Longtitude)
         {
             // creating the position from the specified latitude and longitude
-            var position = new Position(userLatitude, userLongitude);
+            var position = new Position(Latitude, Longtitude);
             // creating the pin that will show a users location on the map
             var pin = new Pin
             {
                 Type = PinType.Generic,
                 Position = position,
-                Label = "FriendUsername"
+                Label = Username
             };
             map.Pins.Add(pin);
         }
