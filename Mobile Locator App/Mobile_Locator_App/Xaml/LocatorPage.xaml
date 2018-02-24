@@ -9,6 +9,7 @@
 
                 <StackLayout x:Name="LogoStack" VerticalOptions="FillAndExpand">
                     <!--For the Logo-->
+
                     <Image x:Name="LogInIcon" Source="LogInIcon.png" Margin="0,80,0,0"/>
                 </StackLayout>
 
@@ -18,7 +19,7 @@
                     <Button x:Name="Button_NavHome" Text="Home" Clicked="Button_NavHome_Clicked" BackgroundColor="Azure"/>
                     <Button x:Name="Button_NavFriends" Text="Pending" Clicked="Button_NavPending_Clicked" BackgroundColor="Azure"/>
                     <Button x:Name="Button_NavAddFriends" Text="Add Friends" Clicked="Button_NavAddFriends_Clicked" BackgroundColor="Azure"/>
-                    
+
                     <!--<Button x:Name="Button_NavSettings" Text="Settings" Clicked="Button_NavSettings_Clicked"/>-->
                 </StackLayout>
 
@@ -37,15 +38,20 @@
                             </OnIdiom.Tablet>
                         </OnIdiom>
 
-
+                        
 
                     </StackLayout.Padding>
+                    
 
+                    
                     <StackLayout x:Name="BottomButtons" VerticalOptions="FillAndExpand" Orientation="Horizontal">
                         <!--For the Buttons at the bottom of the page-->
                         <Button x:Name="Button_Exit" Text="ExitLocator" Clicked="Button_Exit_Clicked"/>
                     </StackLayout>
 
+                </StackLayout>
+
+                <StackLayout x:Name="MapSection" VerticalOptions="StartAndExpand">
                 </StackLayout>
             </StackLayout>
         </ScrollView>

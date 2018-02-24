@@ -108,6 +108,7 @@ namespace Mobile_Locator_App.Xaml
         private void gotLocation(string[] location)
         {
             DisplayAlert("Alert", "Location has been found. Longitude: " + location[0] + " Latitude: " + location[1], "OK");
+
         }
 
         private void noLocation()

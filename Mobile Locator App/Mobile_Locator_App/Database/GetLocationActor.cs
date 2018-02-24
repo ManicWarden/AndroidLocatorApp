@@ -21,32 +21,11 @@ namespace Mobile_Locator_App.Code
 
         private readonly IActorRef _getLocationActor;
 
-
-        
-
         public IntPtr Handle => throw new NotImplementedException();
 
         public GetLocationActor(IActorRef getLocationActor, Context mContext)
         {
             Console.WriteLine("*******************************************GetLocationActor");
-            //_getLocationActor = getLocationActor;
-            getLocation GetLocation = new getLocation(mContext);
-            GetLocation.findLocation();
-        }
-
-        private void test()
-        {
-
-        }
-
-        public void testw()
-        {
-
-        }
-
-        public void Initiliase(Context mContext)
-        {
-            Console.WriteLine("*******************************************GetLocationActor Initiliase");
             //_getLocationActor = getLocationActor;
             getLocation GetLocation = new getLocation(mContext);
             GetLocation.findLocation();
@@ -72,6 +51,8 @@ namespace Mobile_Locator_App.Code
         }
     }
 
+    // an object cannot inherit from both Untyped Actor and Java.Lang.Object at the same time, hence the need for two classes
+    // one to use a seperate thread and another that will run on the seperate thread to get the location of the user
     public class getLocation : Java.Lang.Object, ILocationListener
     {
         Location currentLocation;
@@ -141,6 +122,8 @@ namespace Mobile_Locator_App.Code
             {
                 Database.DBSupervisor.RedisDB.StringSet(User.Username + "Longtitude", longitude);
                 Database.DBSupervisor.RedisDB.StringSet(User.Username + "Latitude", latitude);
+                User.Latitude = latitude;
+                User.Longitude = longitude;
                 MessagingCenter.Send<getLocation, string[]>(this, "gotLocation", locationValues);
             }
             

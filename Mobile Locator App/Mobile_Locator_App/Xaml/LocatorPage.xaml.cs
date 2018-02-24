@@ -15,7 +15,8 @@ namespace Mobile_Locator_App.Xaml
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LocatorPage : ContentPage
 	{
-        
+
+        private Map map;
 
         public LocatorPage()
         {
@@ -23,27 +24,51 @@ namespace Mobile_Locator_App.Xaml
             InitializeComponent();
             InitializePageDesign();
             InitMap();
-            
+
+            //if the user has selected a friend to find
+            addPin();
+
+
 
         }
 
        public void InitMap()
-        {
-            var map = new Map(
-                MapSpan.FromCenterAndRadius(
-                    new Position(37, -122), Distance.FromMiles(0.3)))
+       {
+            //FromCenterAndRadius is used to center the map on the given position
+            // in this case the users last known location
+            map = new Map(
+            MapSpan.FromCenterAndRadius(
+            new Position(Convert.ToDouble(User.Latitude), Convert.ToDouble(User.Longitude)), Distance.FromMiles(0.3)))
             {
                 IsShowingUser = true,
                 HeightRequest = 100,
                 WidthRequest = 960,
+                MapType = MapType.Street,
                 VerticalOptions = LayoutOptions.FillAndExpand
             };
 
             // creating the area where the map will be placed on the page
             var stack = new StackLayout { Spacing = 0 };
+            //var stack = MainContentSection;
             stack.Children.Add(map);
             Content = stack;
-            
+            map.MoveToRegion(new MapSpan(map.VisibleRegion.Center, Convert.ToDouble(User.Latitude), Convert.ToDouble(User.Longitude)));
+
+
+        }
+
+        public void addPin(/*FriendUsername, Latitude,Longtitude*/)
+        {
+            // creating the position from the specified latitude and longitude
+            var position = new Position(10, -122);
+            // creating the pin that will show a users location on the map
+            var pin = new Pin
+            {
+                Type = PinType.Generic,
+                Position = position,
+                Label = "FriendUsername"
+            };
+            map.Pins.Add(pin);
         }
 
 
