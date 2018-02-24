@@ -21,7 +21,6 @@ namespace Mobile_Locator_App.Xaml
             InitializeComponent();
             InitializePageDesign();
 
-            Xamarin.FormsMaps.Init();
 
         }
 

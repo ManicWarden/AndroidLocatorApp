@@ -30,9 +30,11 @@ namespace Mobile_Locator_App.Droid
 
             base.OnCreate (bundle);
 
-            Xamarin.FormsMaps.Init(this, bundle);
+            // Initialises Xamarin Forms throughout the project
             global::Xamarin.Forms.Forms.Init (this, bundle);
-			LoadApplication (new Mobile_Locator_App.App ());
+            // Initialising Xamarin FormsMaps for the Google Maps API, Initialised after the Xamarin.Forms.Forms.Init call
+            Xamarin.FormsMaps.Init(this, bundle);
+            LoadApplication (new Mobile_Locator_App.App ());
 		}
 	}
 }
