@@ -27,6 +27,8 @@ E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locat
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Android.Support.v7.RecyclerView.dll
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Android.Support.Vector.Drawable.dll
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Core.dll
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Maps.Android.dll
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Maps.dll
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Platform.dll
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll
@@ -44,11 +46,13 @@ E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locat
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Core.pdb
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Core.xml
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Core.dll.mdb
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Maps.xml
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.pdb
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Xaml.pdb
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Xaml.xml
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll.mdb
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Android.csprojResolveAssemblyReference.cache
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\Xamarin.GooglePlayServices.Basement.dll.stamp
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\Xamarin.GooglePlayServices.Tasks.dll.stamp
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\Xamarin.GooglePlayServices.Base.dll.stamp
@@ -73,25 +77,13 @@ E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locat
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\res\values\styles.xml
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\R.cs.flag
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\uploadflags.txt
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Android.csprojResolveAssemblyReference.cache
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Mobile_Locator_App.Android.dll.mdb
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\android\assets\FormsViewGroup.dll.mdb
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\android\assets\Mobile_Locator_App.Android.dll.mdb
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\android\assets\Xamarin.Forms.Core.dll.mdb
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Maps.Android.dll
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Maps.dll
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Maps.xml
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Mobile_Locator_App.Android.dll
-E:\University\Honours Project\Mobile Locator App\packages\Xamarin.Forms.2.5.0.280555\lib\MonoAndroid10\FormsViewGroup.dll
-E:\University\Honours Project\Mobile Locator App\packages\Xamarin.Forms.2.5.0.280555\lib\MonoAndroid10\Xamarin.Forms.Core.dll
-E:\University\Honours Project\Mobile Locator App\packages\Xamarin.Forms.2.5.0.280555\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll
-E:\University\Honours Project\Mobile Locator App\packages\Xamarin.Forms.2.5.0.280555\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll
-bin\Debug\FormsViewGroup.dll.mdb
-bin\Debug\Xamarin.Forms.Core.dll.mdb
-bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb
-bin\Debug\Xamarin.Forms.Xaml.dll.mdb
 bin\Debug\Mono.Android.pdb
 bin\Debug\mscorlib.pdb
 bin\Debug\System.Core.pdb
