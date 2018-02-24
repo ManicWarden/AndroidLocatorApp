@@ -52,7 +52,6 @@ E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locat
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Xaml.pdb
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Xaml.xml
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll.mdb
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Android.csprojResolveAssemblyReference.cache
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\Xamarin.GooglePlayServices.Basement.dll.stamp
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\Xamarin.GooglePlayServices.Tasks.dll.stamp
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\Xamarin.GooglePlayServices.Base.dll.stamp
