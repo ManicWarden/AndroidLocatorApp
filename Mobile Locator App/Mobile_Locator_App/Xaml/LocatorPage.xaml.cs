@@ -17,6 +17,8 @@ namespace Mobile_Locator_App.Xaml
 	{
 
         private Map map;
+        private double userLatitude = Convert.ToDouble(User.Latitude);
+        private double userLongitude = Convert.ToDouble(User.Longitude);
 
         public LocatorPage()
         {
@@ -32,13 +34,13 @@ namespace Mobile_Locator_App.Xaml
 
         }
 
-       public void InitMap()
-       {
+        public void InitMap()
+        {
             //FromCenterAndRadius is used to center the map on the given position
             // in this case the users last known location
             map = new Map(
             MapSpan.FromCenterAndRadius(
-            new Position(Convert.ToDouble(User.Latitude), Convert.ToDouble(User.Longitude)), Distance.FromMiles(0.3)))
+            new Position(userLatitude, userLongitude), Distance.FromMiles(0.3)))
             {
                 IsShowingUser = true,
                 HeightRequest = 100,
@@ -46,13 +48,15 @@ namespace Mobile_Locator_App.Xaml
                 MapType = MapType.Street,
                 VerticalOptions = LayoutOptions.FillAndExpand
             };
-
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(userLatitude, userLongitude),
+                                             Distance.FromMiles(1)));
             // creating the area where the map will be placed on the page
             var stack = new StackLayout { Spacing = 0 };
             //var stack = MainContentSection;
-            stack.Children.Add(map);
+            stack.Children.Add(map); 
             Content = stack;
-            map.MoveToRegion(new MapSpan(map.VisibleRegion.Center, Convert.ToDouble(User.Latitude), Convert.ToDouble(User.Longitude)));
+
+
 
 
         }
@@ -60,7 +64,7 @@ namespace Mobile_Locator_App.Xaml
         public void addPin(/*FriendUsername, Latitude,Longtitude*/)
         {
             // creating the position from the specified latitude and longitude
-            var position = new Position(10, -122);
+            var position = new Position(userLatitude, userLongitude);
             // creating the pin that will show a users location on the map
             var pin = new Pin
             {
