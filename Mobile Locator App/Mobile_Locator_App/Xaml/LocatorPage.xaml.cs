@@ -51,10 +51,11 @@ namespace Mobile_Locator_App.Xaml
             map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(userLatitude, userLongitude),
                                              Distance.FromMiles(1)));
             // creating the area where the map will be placed on the page
-            var stack = new StackLayout { Spacing = 0 };
-            //var stack = MainContentSection;
-            stack.Children.Add(map); 
-            Content = stack;
+            //var stack = new Grid { };
+            var stack = MapSection;
+            stack.Children.Add(map);
+            
+            //Content = stack;
 
 
 

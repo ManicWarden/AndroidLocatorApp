@@ -7,11 +7,6 @@
             <StackLayout x:Name="MasterLayout">
                 <!--The overall container-->
 
-                <StackLayout x:Name="LogoStack" VerticalOptions="FillAndExpand">
-                    <!--For the Logo-->
-
-                    <Image x:Name="LogInIcon" Source="LogInIcon.png" Margin="0,80,0,0"/>
-                </StackLayout>
 
                 <StackLayout x:Name="NavigationBar"  HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
                     <!--For the Nav buttons-->
@@ -22,37 +17,19 @@
 
                     <!--<Button x:Name="Button_NavSettings" Text="Settings" Clicked="Button_NavSettings_Clicked"/>-->
                 </StackLayout>
-
-                <StackLayout x:Name="MainContentSection" VerticalOptions="StartAndExpand" >
+                <Grid x:Name="MapSection" VerticalOptions="FillAndExpand"></Grid>
+                
+                <StackLayout x:Name="MainContentSection"  >
                     <!--Log In Section where the user will enter their details-->
-                    <StackLayout.Padding>
-
-                        <OnIdiom x:TypeArguments="Thickness">
-                            <!--OnIdiom allows for different padding specifications depending on tablet or mobile phone -->
-                            <OnIdiom.Phone>
-                                40,0,40,0
-                                <!-- Left, Top, Right, Bottom, IPhones require a top padding of at least 20 or the form will be covered by IPhones default top bar -->
-                            </OnIdiom.Phone>
-                            <OnIdiom.Tablet>
-                                140,150,140,0
-                            </OnIdiom.Tablet>
-                        </OnIdiom>
-
-                        
-
-                    </StackLayout.Padding>
-                    
-
-                    
-                    <StackLayout x:Name="BottomButtons" VerticalOptions="FillAndExpand" Orientation="Horizontal">
+                           
+                    <StackLayout x:Name="BottomButtons" VerticalOptions="FillAndExpand" Orientation="Horizontal" >
                         <!--For the Buttons at the bottom of the page-->
                         <Button x:Name="Button_Exit" Text="ExitLocator" Clicked="Button_Exit_Clicked"/>
                     </StackLayout>
 
                 </StackLayout>
+                
 
-                <StackLayout x:Name="MapSection" VerticalOptions="StartAndExpand">
-                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
