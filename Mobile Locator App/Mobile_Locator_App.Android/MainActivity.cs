@@ -30,7 +30,8 @@ namespace Mobile_Locator_App.Droid
 
             base.OnCreate (bundle);
 
-			global::Xamarin.Forms.Forms.Init (this, bundle);
+            Xamarin.FormsMaps.Init(this, bundle);
+            global::Xamarin.Forms.Forms.Init (this, bundle);
 			LoadApplication (new Mobile_Locator_App.App ());
 		}
 	}

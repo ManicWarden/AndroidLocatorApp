@@ -85,7 +85,6 @@ E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locat
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\0757626b.proguard.stamp
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\2f4d086a.proguard.stamp
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\ea5c07c4.proguard.stamp
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Mobile_Locator_App.Android.dll
 bin\Debug\Mono.Android.pdb
 bin\Debug\mscorlib.pdb
 bin\Debug\System.Core.pdb
