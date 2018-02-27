@@ -27,6 +27,10 @@ namespace Mobile_Locator_App.Code
         {
             Console.WriteLine("*******************************************GetLocationActor");
             //_getLocationActor = getLocationActor;
+            if (!Code.User.CheckInternetConnection())
+            {
+                throw new Exception();
+            }
             getLocation GetLocation = new getLocation(mContext);
             GetLocation.findLocation();
         }

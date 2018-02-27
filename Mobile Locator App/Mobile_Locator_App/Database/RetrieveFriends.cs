@@ -16,14 +16,13 @@ namespace Mobile_Locator_App.Database
         
         public List<string> Friends = new List<string>();
 
-        public void test()
-        {
-
-            
-        }
 
         public List<string> retrieveFriends()
         {
+            if (!Code.User.CheckInternetConnection())
+            {
+                throw new Exception();
+            }
             Console.WriteLine("**********************************************************RetrieveFriends***");
             ///////////////////////////THIS IS WHERE IT BREAKS
             //HomePage home = new HomePage(); // THIS IS THE CAUSE

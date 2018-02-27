@@ -23,6 +23,10 @@ namespace Mobile_Locator_App.Database
 
             //List<string> Friends = new List<string>();
             //Friends = RetrieveFriends();
+            if (!Code.User.CheckInternetConnection())
+            {
+                throw new Exception();
+            }
             Console.WriteLine("**********************************************************GetFriends***");
             RetrieveFriends();
             

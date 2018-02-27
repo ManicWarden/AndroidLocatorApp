@@ -13,6 +13,10 @@ namespace Mobile_Locator_App.Database
 
         public GetPendingFriends(IActorRef getPendingFriendsActor)
         {
+            if (!Code.User.CheckInternetConnection())
+            {
+                throw new Exception();
+            }
             RetrievePendingFriends();
         }
 
