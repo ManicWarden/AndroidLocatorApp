@@ -27,6 +27,11 @@ namespace Mobile_Locator_App.Database
             _addFriendActor = addFriendActor;
             _username = username;
             addFriend();
+            // if there is no internet connection
+            if(!User.CheckInternetConnection())
+            {
+                throw new Exception();
+            }
         }
 
         private void addFriend()

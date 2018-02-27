@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 
 namespace Mobile_Locator_App.Code
@@ -44,6 +45,35 @@ namespace Mobile_Locator_App.Code
         public static void addToFriendsToLocate(string username)
         {
             friendsToLocate.Add(username);
+        }
+
+        /// <summary>
+        /// To check if the user is connected to the internet
+        /// if so a true is returned if not a false
+        /// </summary>
+        /// <returns>Bool</returns>
+        public static bool CheckInternetConnection()
+        {
+            string url = "http://google.com";
+
+            try
+            {
+                HttpWebRequest internetRequest = (HttpWebRequest)WebRequest.Create(url);
+                internetRequest.Timeout = 5000;
+
+                WebResponse internetResponse = internetRequest.GetResponse();
+
+                Console.WriteLine("*******************************Connection established " + internetRequest.ToString());
+
+                internetResponse.Close();
+
+                return true;
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine("******************************Connection Failed" + ex.ToString());
+                return false;
+            }
         }
     }
 }

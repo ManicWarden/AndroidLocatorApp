@@ -17,6 +17,12 @@ namespace Mobile_Locator_App.Xaml
         {
             InitializeComponent();
             InitializePageDesign();
+
+            MessagingCenter.Subscribe<DBSupervisor>(this, "noInternet", (sender) =>
+            {
+                Console.WriteLine("************************************************************MessagingCenter noInternet");
+                DisplayAlert("No Internet Connection.", "The application cannot connect to the internet, please ensure that your device is connected to a valid network.", "OK");
+            });
         }
 
         void InitializePageDesign() // to set the elements on the Log in page to the colours set in the Constants Class
@@ -27,6 +33,7 @@ namespace Mobile_Locator_App.Xaml
 
         private void Button_NavHome_Clicked(object sender, EventArgs e)
         {
+            ActorPrimus.stopActors();
             Navigation.PushModalAsync(new HomePage());
             //NavigationCode.GoHome();
         }
@@ -34,12 +41,14 @@ namespace Mobile_Locator_App.Xaml
 
         private void Button_NavAddFriends_Clicked(object sender, EventArgs e)
         {
+            ActorPrimus.stopActors();
             Navigation.PushModalAsync(new AddFriendsPage());
             //NavigationCode.GoAddFriends();
         }
 
         private void Button_NavLocator_Clicked(object sender, EventArgs e)
         {
+            ActorPrimus.stopActors();
             Navigation.PushModalAsync(new LocatorPage());
             //NavigationCode.GoLocator();
         }

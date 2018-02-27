@@ -35,6 +35,13 @@ namespace Mobile_Locator_App.Xaml
             Props ConfirmFriendRequestProps = Props.Create<ConfirmFriendRequest>();
             confirmFriendRequestActor = ActorPrimus.MainActorSystem.ActorOf(ConfirmFriendRequestProps, "confirmFriendRequestActor");
 
+            MessagingCenter.Subscribe<DBSupervisor>(this, "noInternet", (sender) =>
+            {
+                Console.WriteLine("************************************************************MessagingCenter noInternet");
+                DisplayAlert("No Internet Connection.", "The application cannot connect to the internet, please ensure that your device is connected to a valid network.", "OK");
+
+            });
+
             MessagingCenter.Subscribe<GetPendingFriends, List<string>>(this, "hasFriends", (sender, arg) =>
             {
                 Console.WriteLine("**************************************************************MessagingCenter has friends.");
@@ -101,18 +108,20 @@ namespace Mobile_Locator_App.Xaml
 
         private void Button_NavHome_Clicked(object sender, EventArgs e)
         {
+            ActorPrimus.stopActors();
             Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.HomePage());
 
         }
 
         private void Button_NavAddFriends_Clicked(object sender, EventArgs e)
         {
-
+            ActorPrimus.stopActors();
             Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.AddFriendsPage());
         }
 
         private void Button_NavLocator_Clicked(object sender, EventArgs e)
         {
+            ActorPrimus.stopActors();
             Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.LocatorPage());
         }
 

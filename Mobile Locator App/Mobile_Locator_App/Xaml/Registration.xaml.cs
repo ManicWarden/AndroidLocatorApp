@@ -30,6 +30,14 @@ namespace Mobile_Locator_App.Xaml
             Props createUserProps = Props.Create<CreateUser>();
             createUserActor = ActorPrimus.MainActorSystem.ActorOf(createUserProps, "createUserActor");
 
+
+            MessagingCenter.Subscribe<DBSupervisor>(this, "noInternet", (sender) =>
+            {
+                Console.WriteLine("************************************************************MessagingCenter noInternet");
+                DisplayAlert("No Internet Connection.", "The application cannot connect to the internet, please ensure that your device is connected to a valid network.", "OK");
+
+            });
+
         }
 
         void InitializePageDesign() // to set the elements on the Log in page to the colours set in the Constants Class

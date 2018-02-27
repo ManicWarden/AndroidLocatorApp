@@ -26,6 +26,12 @@ namespace Mobile_Locator_App.Xaml
 
             Props addFriendProps = Props.Create<AddFriend>();
             addFriendActor = ActorPrimus.MainActorSystem.ActorOf(addFriendProps, "addFriendActor");
+
+            MessagingCenter.Subscribe<DBSupervisor>(this, "noInternet", (sender) =>
+            {
+                Console.WriteLine("************************************************************MessagingCenter noInternet");
+                DisplayAlert("No Internet Connection.", "The application cannot connect to the internet, please ensure that your device is connected to a valid network.", "OK");
+            });
         }
 
         void InitializePageDesign() // to set the elements on the Log in page to the colours set in the Constants Class
@@ -36,12 +42,14 @@ namespace Mobile_Locator_App.Xaml
 
         private void Button_NavHome_Clicked(object sender, EventArgs e)
         {
+            ActorPrimus.stopActors();
             Navigation.PushModalAsync(new HomePage());
             //NavigationCode.GoHome();
         }
 
         private void Button_NavPending_Clicked(object sender, EventArgs e)
         {
+            ActorPrimus.stopActors();
             Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.PendingFriendRequests());
 
         }
@@ -49,6 +57,7 @@ namespace Mobile_Locator_App.Xaml
 
         private void Button_NavLocator_Clicked(object sender, EventArgs e)
         {
+            ActorPrimus.stopActors();
             Navigation.PushModalAsync(new LocatorPage());
             //NavigationCode.GoLocator();
         }

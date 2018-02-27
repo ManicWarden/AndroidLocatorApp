@@ -186,6 +186,47 @@ namespace Mobile_Locator_App.Database
                 () => new GetPendingFriends(msg.GetPendingFriendsActor)));
             }
         }
+
+        protected override SupervisorStrategy SupervisorStrategy()
+        {
+            // One for One strategy means that every child actor will be treated seperately
+            // so that if one encounters an error then only that actor will be effected by
+            // the Supervisor strategy. This is opposed to the AllforOneStrategy that
+            // will in the case of a child actor experiencing an error whatever action is 
+            // taken to attempt to fix said actor will be applied to all child actors
+            return new OneForOneStrategy(
+                maxNrOfRetries: 10, // giving the child actor 10 attempts to recover
+                withinTimeRange: TimeSpan.FromSeconds(30), // giving the child actor 30 seconds to recover
+                localOnlyDecider: ex =>
+                {
+                    // decides what the child actor should do dependant on 
+                    // a specific exception
+                    switch (ex)
+                    {
+                        case ArithmeticException ae:
+                            return Directive.Resume;
+                        case Exception e:
+                            NoInternetError();
+                            return Directive.Restart;
+                        default:
+                            return Directive.Stop;
+                    }
+                }
+                );
+        }
+
+        /// <summary>
+        /// this will send a message to anything that is listening
+        /// in this case it will be whatever form the user is currently using
+        /// which will subsequently interpret the message and display something to the user
+        /// such as "There is no internet connectivity"
+        /// </summary>
+
+        private void NoInternetError()
+        {
+            Xamarin.Forms.MessagingCenter.Send(this, "command");
+            throw new Exception();
+        }
     }
 
 }

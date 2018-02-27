@@ -55,6 +55,15 @@ namespace Mobile_Locator_App.Code
             // blocks the main thread from shutting down until the appropriate command is received
             MainActorSystem.WhenTerminated.Wait(); // always keep it as the last line of code in Main, anything below will not run
         }*/
+
+        public static void stopActors()
+        {
+            // stops the DBSupervisorActor and all child actors after they 
+            // have finished reading all messages in the inbox
+            // a bit slower than the Stop message but safer as there will be less remnants
+            DBSupervisorActor.Tell(PoisonPill.Instance);
+        }
     }
+
     #endregion
 }

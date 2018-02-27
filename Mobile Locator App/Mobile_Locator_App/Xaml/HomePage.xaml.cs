@@ -102,6 +102,13 @@ namespace Mobile_Locator_App.Xaml
                  Console.WriteLine("*************************************************************Location has not been found.");
                 noLocation();
             });
+
+            MessagingCenter.Subscribe<DBSupervisor>(this, "noInternet", (sender) =>
+            {
+                Console.WriteLine("************************************************************MessagingCenter noInternet");
+                DisplayAlert("No Internet Connection.", "The application cannot connect to the internet, please ensure that your device is connected to a valid network.", "OK");
+                
+            });
         }
         #endregion
 
@@ -158,18 +165,20 @@ namespace Mobile_Locator_App.Xaml
 
         private void Button_NavPending_Clicked(object sender, EventArgs e)
         {
+            ActorPrimus.stopActors();
             Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.PendingFriendRequests());
 
         }
 
         private void Button_NavAddFriends_Clicked(object sender, EventArgs e)
         {
-            
+            ActorPrimus.stopActors();
             Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.AddFriendsPage());
         }
 
         private void Button_NavLocator_Clicked(object sender, EventArgs e)
         {
+            ActorPrimus.stopActors();
             Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.LocatorPage());
         }
 

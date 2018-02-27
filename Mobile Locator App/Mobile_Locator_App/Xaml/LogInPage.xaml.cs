@@ -17,7 +17,13 @@ namespace Mobile_Locator_App.Xaml
         {
             InitializeComponent();
             InitializePageDesign();
-            //ActorStart.startActor();
+
+            MessagingCenter.Subscribe<DBSupervisor>(this, "noInternet", (sender) =>
+            {
+                Console.WriteLine("************************************************************MessagingCenter noInternet");
+                DisplayAlert("No Internet Connection.", "The application cannot connect to the internet, please ensure that your device is connected to a valid network.", "OK");
+            });
+
 
         }
 

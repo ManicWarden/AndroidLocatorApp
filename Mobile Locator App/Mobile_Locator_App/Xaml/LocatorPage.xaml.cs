@@ -26,6 +26,14 @@ namespace Mobile_Locator_App.Xaml
             
             InitializeComponent();
             InitializePageDesign();
+
+            MessagingCenter.Subscribe<Database.DBSupervisor>(this, "noInternet", (sender) =>
+            {
+                Console.WriteLine("************************************************************MessagingCenter noInternet");
+                DisplayAlert("No Internet Connection.", "The application cannot connect to the internet, please ensure that your device is connected to a valid network.", "OK");
+
+            });
+
             InitMap();
 
             // add the users current location to the map
@@ -121,18 +129,21 @@ namespace Mobile_Locator_App.Xaml
 
         private void Button_NavHome_Clicked(object sender, EventArgs e)
         {
+            ActorPrimus.stopActors();
             Navigation.PushModalAsync(new HomePage());
             //NavigationCode.GoHome();
         }
 
         private void Button_NavPending_Clicked(object sender, EventArgs e)
         {
+            ActorPrimus.stopActors();
             Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.PendingFriendRequests());
 
         }
 
         private void Button_NavAddFriends_Clicked(object sender, EventArgs e)
         {
+            ActorPrimus.stopActors();
             Navigation.PushModalAsync(new AddFriendsPage());
             //NavigationCode.GoAddFriends();
         }

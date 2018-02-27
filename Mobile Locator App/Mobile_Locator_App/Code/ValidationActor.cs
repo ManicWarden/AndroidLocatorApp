@@ -1,6 +1,7 @@
 ﻿using Akka.Actor;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -9,6 +10,7 @@ namespace Mobile_Locator_App.Code
 {
     class ValidationActor : UntypedActor
     {
+
 
         bool IsValidEmail(string email)
         {

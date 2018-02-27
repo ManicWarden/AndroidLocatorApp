@@ -22,6 +22,11 @@ namespace Mobile_Locator_App.Database
             _username = username;
             _password = password;
             Console.WriteLine("**************************Create User triggered");
+            // if there is no internet connection
+            if (!Code.User.CheckInternetConnection())
+            {
+                throw new Exception();
+            }
             InsertUser();
         }
 
