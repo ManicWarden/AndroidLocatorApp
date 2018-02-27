@@ -55,20 +55,27 @@ namespace Mobile_Locator_App.Xaml
                 DisplayAlert("Login", "Login Failed, Please enter a password", "OK");
                 return;
             }
-
-            if (checkUsername())
+            if (User.CheckInternetConnection())
             {
-                 User user = new User(Entry_Username.Text, Entry_Password.Text);
-                 DisplayAlert("Login", "Login Succeeded", "OK");// First is label, second is text, third is button
-                                                                // move user to the home page
-                Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.HomePage());
-            }
+                if (checkUsername())
+                {
+                    User user = new User(Entry_Username.Text, Entry_Password.Text);
+                    DisplayAlert("Login", "Login Succeeded", "OK");// First is label, second is text, third is button
+                                                                   // move user to the home page
+                    Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.HomePage());
+                }
 
+                else
+                {
+                    DisplayAlert("Login", "Login Failed, the username/password combination was incorrect", "OK ");
+                    Entry_Username.Text = "";
+                    Entry_Password.Text = "";
+                    return;
+                }
+            }
             else
             {
-                DisplayAlert("Login", "Login Failed, the username/password combination was incorrect", "OK ");
-                Entry_Username.Text = "";
-                Entry_Password.Text = "";
+                DisplayAlert("No Internet Connection.", "The application cannot connect to the internet, please ensure that your device is connected to a valid network.", "OK");
                 return;
             }
         }
@@ -78,25 +85,27 @@ namespace Mobile_Locator_App.Xaml
             // will use the given username and password combination to check if it already exists
 
             // if the username exists
-            if (DBSupervisor.RedisDB.KeyExists(Entry_Username.Text))
-            {
-                // if the password for that username is the same as the user entered
-                if(DBSupervisor.RedisDB.StringGet(Entry_Username.Text) == Entry_Password.Text)
+          
+                if (DBSupervisor.RedisDB.KeyExists(Entry_Username.Text))
                 {
-                    return true;
+                    // if the password for that username is the same as the user entered
+                    if (DBSupervisor.RedisDB.StringGet(Entry_Username.Text) == Entry_Password.Text)
+                    {
+                        return true;
+                    }
+
+                    else
+                    {
+                        return false;
+                    }
+
                 }
-                
+
                 else
                 {
                     return false;
                 }
-                
-            }
 
-            else
-            {
-                return false;
-            }
         }
 
         void UserRegister(object sender, EventArgs e)

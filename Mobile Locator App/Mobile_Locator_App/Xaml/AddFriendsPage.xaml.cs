@@ -78,31 +78,43 @@ namespace Mobile_Locator_App.Xaml
                 // if the entered username exists
                 if (Entry_Username.Text != User.Username)
                 {
-                    if (DBSupervisor.RedisDB.KeyExists(Entry_Username.Text))
+                    if (User.CheckInternetConnection())
                     {
-                        if (checkFriend())
+                        if (DBSupervisor.RedisDB.KeyExists(Entry_Username.Text))
                         {
-                            ActorPrimus.DBSupervisorActor.Tell(new DBSupervisor.AddFriendCommand(Entry_Username.Text, addFriendActor));
-                            DisplayAlert("Success", Entry_Username.Text + " has been added as a friend", "OK");
+                             if (checkFriend())
+                             {
+                                 ActorPrimus.DBSupervisorActor.Tell(new DBSupervisor.AddFriendCommand(Entry_Username.Text, addFriendActor));
+                                 DisplayAlert("Success", Entry_Username.Text + " has been added as a friend", "OK");
+                                
+                             }
+
 
                         }
-
+                        else
+                        {
+                            DisplayAlert("Invalid Username", "The username you have entered is not recognised, please try another", "OK");
+                            return;
+                        }
 
                     }
                     else
                     {
-                        DisplayAlert("Invalid Username", "The username you have entered is not recognised, please try another", "OK");
+                          DisplayAlert("No Internet Connection.", "The application cannot connect to the internet, please ensure that your device is connected to a valid network.", "OK");
+                          return;
                     }
-                }
+            }
                 else
                 {
                     DisplayAlert("Alert", "Please do not enter your own username.", "OK");
+                    return;
                 }
 
             }
             else
             {
                 DisplayAlert("Friends Username", "Please enter a username into the labeled box", "OK");
+                return;
             }
         }
 

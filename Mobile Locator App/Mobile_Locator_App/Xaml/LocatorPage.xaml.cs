@@ -33,7 +33,7 @@ namespace Mobile_Locator_App.Xaml
                 DisplayAlert("No Internet Connection.", "The application cannot connect to the internet, please ensure that your device is connected to a valid network.", "OK");
 
             });
-
+            checkNet();
             InitMap();
 
             // add the users current location to the map
@@ -66,7 +66,21 @@ namespace Mobile_Locator_App.Xaml
                 
         }
             
+        /// <summary>
+        /// Check internet connectivity
+        /// if not connected then wait 5 seconds for the  user to enable the internet
+        /// before reloading the page and trying again
+        /// </summary>
+        private void checkNet()
+        {
 
+            if (!User.CheckInternetConnection())
+            {
+                DisplayAlert("No Internet Connection.", "The application cannot connect to the internet, please ensure that your device is connected to a valid network.", "OK");
+                System.Threading.Tasks.Task.Delay(5000);
+                Navigation.PushModalAsync(new LocatorPage());
+            }
+        }
 
 
         
@@ -160,38 +174,5 @@ namespace Mobile_Locator_App.Xaml
         }
     }
 
-    public partial class oldLocation
-    {
-        public oldLocation()
-        {
-            InitiliaseMapFragment initMap = new InitiliaseMapFragment();
-            initMap.initiliaseMapFragment();
-        }
-
-        private class InitiliaseMapFragment : Java.Lang.Object, IOnMapReadyCallback
-        {
-            GoogleMap _map;
-            public void initiliaseMapFragment()
-            {
-                // the FragmentManager belongs to the activity class of the project, as activity and contentpage cannot be inherited at
-                // the same time a reference is needed to the MainActivity activity for the FragmentManager to work
-                MapFragment _mapFragment = MainActivity.activity.FragmentManager.FindFragmentByTag("map") as MapFragment;
-
-                _mapFragment.GetMapAsync(this);
-                // after the above call is returned the settings are configured
-                if (_map != null)
-                {
-                    _map.UiSettings.ZoomControlsEnabled = true;
-                    _map.UiSettings.CompassEnabled = true;
-                    _map.MapType = GoogleMap.MapTypeHybrid; // should take longer to load than normal or terrain but not as long as satellite
-                }
-            }
-            public void OnMapReady(GoogleMap map)
-            {
-                _map = map;
-            }
-
-        }
-    }
 
 }

@@ -82,43 +82,26 @@ namespace Mobile_Locator_App.Xaml
                     DisplayAlert("Username", "Please ensure that the username does not contain any spaces.", "OK");
                     return;
                 }
-
-                if(checkUsername(Entry_Username.Text))
+                if (User.CheckInternetConnection())
                 {
-                    DisplayAlert("Username", "That username is already in use, please enter another.", "OK");
+                    if (checkUsername(Entry_Username.Text))
+                    {
+                        DisplayAlert("Username", "That username is already in use, please enter another.", "OK");
+                        return;
+                    }
+                }
+                else
+                {
+                    DisplayAlert("No Internet Connection.", "The application cannot connect to the internet, please ensure that your device is connected to a valid network.", "OK");
                     return;
                 }
 
-           
+
                 if (Entry_Password.Text.Length < 8 || Entry_Password.Text.Contains(" ")) // To ensure the password is of appropriate length
                 {
                     DisplayAlert("Password", "Password should be at least 8 characters long and doesn't contain any spaces.", "OK");
                     return;
                 }
-
-                /*if (Entry_Forename.Text.Contains(" "))
-                {
-                    DisplayAlert("Forename", "Please ensure that the forename field does not contain any spaces.", "OK");
-                }
-
-                if (Entry_Surname.Text.Contains(" "))
-                {
-                    DisplayAlert("Forename", "Please ensure that the forename field does not contain any spaces.", "OK");
-                }
-
-                else if (!IsValidEmail(Entry_Email.Text)) // to ensure that the entered email address is valid
-                {
-                    DisplayAlert("Email Address", "Email Address is invalid, please check the entered address for errors and ensure that the email address is valid.", "OK");
-                    return;
-                }
-
-                // to validate phone number try using dependency service to get the phone number from the device, this only works on android and not all of the time
-                // Maybe send a message to the given phone number with a security code that must be entered before finalising registration.
-                if (!IsValidPhoneNo(Entry_PhoneNo.Text))
-                {
-                    DisplayAlert("Phone Number", "The entered phone number is invalid, please check it and ensure that there are no non-number characters and that all the numbers are present.", "OK");
-                    return;
-                }*/
 
                 else
                 {
@@ -140,84 +123,6 @@ namespace Mobile_Locator_App.Xaml
 
         }
 
-        bool IsValidEmail(string email)
-        {
-            // I think the try sends a message to the email address passed, if it succeeds then the function returns a true, 
-            // if it doesn't succeed the the try fails and the catch returns a false. Gotten from https://stackoverflow.com/questions/1365407/c-sharp-code-to-validate-email-address
-
-
-            if (email.Contains("\"\"")) // if the string email contains ""
-            {
-                if (email.Substring(email.LastIndexOf('"') + 1).Contains("@")) // if an @ symbol comes after the "" then it can be valid
-                {
-                    return true;
-                }
-
-                else
-                {
-                    return false;
-                }
-            }
-
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email); // Doesn't work for Universal Windows Phone, may be missing a reference
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        bool IsValidPhoneNo(string PhoneNo)
-        {
-            Console.WriteLine("******************************************Phone Validation Phone Number length = " + PhoneNo.Length);
-            //Jury rigged for different sized numbers until the text message verification is coded
-            // as different areas have different mobile phone number lengths
-            if (PhoneNo.Length == 9)
-            {
-                Console.WriteLine("******************************************Phone Length == 9");
-                return Regex.Match(PhoneNo, @"^[0-9]{9}$").Success; // {} dictates the length of the number
-
-            }
-            else if (PhoneNo.Length == 10)
-            {
-                Console.WriteLine("******************************************Phone Length == 10");
-                return Regex.Match(PhoneNo, @"^[0-9]{10}$").Success;
-
-
-            }
-            else if (PhoneNo.Length == 11)
-            {
-                Console.WriteLine("******************************************Phone Length == 11");
-                return Regex.Match(PhoneNo, @"^[0-9]{11}$").Success;
-
-
-            }
-            else if (PhoneNo.Length == 12)
-            {
-                Console.WriteLine("******************************************Phone Length == 12");
-                return Regex.Match(PhoneNo, @"^[0-9]{12}$").Success;
-
-
-            }
-
-            else if (PhoneNo.Length == 13)
-            {
-                Console.WriteLine("******************************************Phone Length == 13");
-                return Regex.Match(PhoneNo, @"^[0-9]{13}$").Success;
-
-
-            }
-            else
-            {
-                Console.WriteLine("******************************************Phone Length = nothing");
-                return false; // if a number is entered that is not between 9 and 13 digits or if the string has characters other than numbers in it
-
-
-            }
-        }
 
         public static bool checkUsername(string _username)
         {
