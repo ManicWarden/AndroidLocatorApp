@@ -24,6 +24,7 @@ namespace Mobile_Locator_App.Database
 
         public AddFriend(IActorRef addFriendActor, string username)
         {
+            Console.WriteLine("//////////////Actor: " + Self);
             _addFriendActor = addFriendActor;
             _username = username;
             addFriend();

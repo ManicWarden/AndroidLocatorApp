@@ -7,12 +7,8 @@
             <StackLayout x:Name="MasterLayout">
                 <!--The overall container-->
 
-                <StackLayout x:Name="LogoStack" VerticalOptions="FillAndExpand">
-                    <!--For the Logo-->
-                    <Image x:Name="LogInIcon" Source="LogInIcon.png" Margin="0,80,0,0"/>
-                </StackLayout>
 
-                <StackLayout x:Name="NavigationBar"  HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                <StackLayout x:Name="NavigationBar"  HorizontalOptions="CenterAndExpand" Orientation="Horizontal" VerticalOptions="Start">
                     <!--For the Nav buttons-->
                     <!--<Button x:Name="Button_NavHome"  Text="Home" Clicked="Button_NavHome_Clicked"/>-->
                     <Button x:Name="Button_NavHome" Text="Home" Clicked="Button_NavHome_Clicked" BackgroundColor="Azure"/>
@@ -22,7 +18,7 @@
                     <!--<Button x:Name="Button_NavSettings" Text="Settings" Clicked="Button_NavSettings_Clicked"/>-->
                 </StackLayout>
 
-                <StackLayout x:Name="MainContentSection" VerticalOptions="StartAndExpand" >
+                <StackLayout x:Name="MainContentSection" VerticalOptions="CenterAndExpand" >
                     <!--Log In Section where the user will enter their details-->
                     <StackLayout.Padding>
 
@@ -42,17 +38,18 @@
                     </StackLayout.Padding>
                     <Label x:Name="Label_Description" Text="Please enter the username of your friend below"/>
                     
-                    <StackLayout x:Name="AddFriendsSection" VerticalOptions="FillAndExpand" Orientation="Horizontal">
-                        <Label x:Name="Label_FriendsUsername" Text="Username"/>
-                        <Entry x:Name="Entry_Username" Placeholder="Woogie43"/>
+                    <StackLayout x:Name="AddFriendsSection" VerticalOptions="FillAndExpand" >
+                        <Label x:Name="Label_Username" Text="Friends Username" />
+                        <Entry x:Name="Entry_Username" Placeholder="Username"/>
                     </StackLayout>
 
-                    <StackLayout x:Name="BottomButtons" VerticalOptions="FillAndExpand" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                        <!--For the Buttons at the bottom of the page-->
-                        <Button x:Name="Button_Exit" Text="ExitAddFriends" Clicked="Button_Exit_Clicked"/>
-                        <Button x:Name="Button_Submit" Text="Submit" Clicked="Button_Submit_Clicked"/>
-                    </StackLayout>
 
+                </StackLayout>
+
+                <StackLayout x:Name="BottomButtons" VerticalOptions = "End" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <!--For the Buttons at the bottom of the page-->
+                    <Button x:Name="Button_Exit" Text="Exit" Clicked="Button_Exit_Clicked"/>
+                    <Button x:Name="Button_Submit" Text="Submit" Clicked="Button_Submit_Clicked"/>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

@@ -45,6 +45,8 @@ namespace Mobile_Locator_App.Xaml
             BackgroundColor = Constants.BackgroundColour;
             Label_Username.TextColor = Constants.MainTextColour;
             Label_Password.TextColor = Constants.MainTextColour;
+            Entry_Password.TextColor = Constants.MainTextColour;
+            Entry_Username.TextColor = Constants.MainTextColour;
             ActivitySpinner.IsVisible = false;
             LogInIcon.HeightRequest = Constants.LogInIconHeight;
 
@@ -66,10 +68,6 @@ namespace Mobile_Locator_App.Xaml
 
             if (string.IsNullOrWhiteSpace(Entry_Username.Text) || // checks the entries in the textboxes to ensure that seome value exists (That is not spaces)
                 string.IsNullOrWhiteSpace(Entry_Password.Text))
-                /*string.IsNullOrWhiteSpace(Entry_Forename.Text) ||
-                string.IsNullOrWhiteSpace(Entry_Surname.Text) ||
-                string.IsNullOrWhiteSpace(Entry_Email.Text) ||
-                string.IsNullOrWhiteSpace(Entry_PhoneNo.Text))*/
             {
                 DisplayAlert("Registration", "Registration Failed, please ensure that all fields are filled", "OK"); // a message box will be displayed to the user,
                                                                                                                      // First field is the title, second the main text, third the continue button
@@ -84,10 +82,18 @@ namespace Mobile_Locator_App.Xaml
                 }
                 if (User.CheckInternetConnection())
                 {
-                    if (checkUsername(Entry_Username.Text))
+                    if (Entry_Username.Text.Length < 6 || Entry_Username.Text.Contains(" "))
                     {
-                        DisplayAlert("Username", "That username is already in use, please enter another.", "OK");
+                        DisplayAlert("Username", "Username should be at least 6 characters long and not contain any spaces.", "OK");
                         return;
+                    }
+                    else
+                    {
+                        if (checkUsername(Entry_Username.Text))
+                        {
+                            DisplayAlert("Username", "That username is already in use, please enter another.", "OK");
+                            return;
+                        }
                     }
                 }
                 else
@@ -99,13 +105,13 @@ namespace Mobile_Locator_App.Xaml
 
                 if (Entry_Password.Text.Length < 8 || Entry_Password.Text.Contains(" ")) // To ensure the password is of appropriate length
                 {
-                    DisplayAlert("Password", "Password should be at least 8 characters long and doesn't contain any spaces.", "OK");
+                    DisplayAlert("Password", "Password should be at least 8 characters long and not contain any spaces.", "OK");
                     return;
                 }
 
                 else
                 {
-
+                    ActivitySpinner.IsVisible = true;
                     // if the username does not exist in the database then call the CreateUser Actor
                     Console.WriteLine("*******************************************Actor message sent.");
                     ActorPrimus.DBSupervisorActor.Tell(new DBSupervisor.CreateUserCommand(Entry_Username.Text, Entry_Password.Text, createUserActor));
@@ -113,7 +119,7 @@ namespace Mobile_Locator_App.Xaml
                     //DatabaseActions.CreateUser(Entry_Username.Text, Entry_Password.Text, Entry_Forename.Text, Entry_Surname.Text, Entry_Email.Text, Entry_PhoneNo.Text);
                     //string username, string password, string forename, string surname, string email, string phoneNumber
                     User user = new User(Entry_Username.Text, Entry_Password.Text);
-                    DisplayAlert("Registration Complete", "Registration Complete, Enjoy.", "OK");
+                    //DisplayAlert("Registration Complete", "Registration Complete, Enjoy.", "OK");
                     Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.HomePage());
                     // move user to the home page
 

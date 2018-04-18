@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Akka.Actor;
 using StackExchange.Redis;
-
+using Xamarin.Forms;
 namespace Mobile_Locator_App.Database
 {
     public class DBSupervisor : UntypedActor
@@ -82,20 +82,7 @@ namespace Mobile_Locator_App.Database
 
         }
 
-        public class GetUserCommand
-        {
-            public GetUserCommand(string userName, IActorRef getUserActor)
-            {
-                Username = userName;
-                GetUserActor = getUserActor;
-
-            }
-
-            public string Username { get; private set; }
-
-            public IActorRef GetUserActor { get; private set; }
-
-        }
+       
 
         public class GetFriendsCommand
         {
@@ -154,13 +141,7 @@ namespace Mobile_Locator_App.Database
                 Context.ActorOf(Props.Create(
                 () => new AddFriend(msg.AddFriendActor, msg.Username)));
             }
-            if (message is GetUserCommand)
-            {
-                var msg = message as GetUserCommand;
-
-                Context.ActorOf(Props.Create(
-                () => new GetUser(msg.GetUserActor, msg.Username)));
-            }
+            
             if (message is GetFriendsCommand)
             {
                 Console.WriteLine("**********************************************************GetFriendsCommand");
@@ -192,11 +173,11 @@ namespace Mobile_Locator_App.Database
             // One for One strategy means that every child actor will be treated seperately
             // so that if one encounters an error then only that actor will be effected by
             // the Supervisor strategy. This is opposed to the AllforOneStrategy that
-            // will in the case of a child actor experiencing an error whatever action is 
+            // will in the case of a child actor experiencing an error whatever action is  
             // taken to attempt to fix said actor will be applied to all child actors
             return new OneForOneStrategy(
                 maxNrOfRetries: 10, // giving the child actor 10 attempts to recover
-                withinTimeRange: TimeSpan.FromSeconds(30), // giving the child actor 30 seconds to recover
+                withinTimeRange: TimeSpan.FromSeconds(10), // giving the child actor 10 seconds to recover
                 localOnlyDecider: ex =>
                 {
                     // decides what the child actor should do dependant on 
@@ -217,15 +198,16 @@ namespace Mobile_Locator_App.Database
 
         /// <summary>
         /// this will send a message to anything that is listening
-        /// in this case it will be whatever form the user is currently using
+        /// in this case it will be whatever form the user is currently using 
         /// which will subsequently interpret the message and display something to the user
         /// such as "There is no internet connectivity"
         /// </summary>
 
         private void NoInternetError()
         {
-            Xamarin.Forms.MessagingCenter.Send(this, "command");
-            throw new Exception();
+            string Error = "Internet was disconnected";
+            MessagingCenter.Send< DBSupervisor, string>(this, "noInternet", Error);
+            //throw new Exception();
         }
     }
 

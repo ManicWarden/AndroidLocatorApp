@@ -7,10 +7,7 @@
             <StackLayout x:Name="MasterLayout">
                 <!--The overall container-->
 
-                <StackLayout x:Name="LogoStack" VerticalOptions="FillAndExpand">
-                    <!--For the Logo-->
-                    <Image x:Name="LogInIcon" Source="LogInIcon.png" Margin="0,80,0,0"/>
-                </StackLayout>
+                
 
                 <StackLayout x:Name="NavigationBar"  HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
                     <!--For the Nav buttons-->
@@ -22,7 +19,8 @@
                 </StackLayout>
 
                 <StackLayout x:Name="MainContentSection" VerticalOptions="StartAndExpand" >
-                    <!--Log In Section where the user will enter their details-->
+                    <Label x:Name="Description" Text="Friends List"></Label>
+                    
                     <StackLayout.Padding>
 
                         <OnIdiom x:TypeArguments="Thickness">
@@ -48,6 +46,7 @@
                     <StackLayout x:Name="BottomButtons" VerticalOptions="FillAndExpand" Orientation="Horizontal">
                         <!--For the Buttons at the bottom of the page-->
                         <Button x:Name="Button_Exit" Text="Exit" Clicked="Button_Exit_Clicked"/>
+                        <Button x:Name="Button_LocationEnabled" Text="Location Enabled" Clicked="Button_LocationEnabled_Clicked"/>
                     </StackLayout>
 
                 </StackLayout>

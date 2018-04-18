@@ -21,11 +21,13 @@ namespace Mobile_Locator_App.Xaml
         private double userLongitude = Convert.ToDouble(User.Longitude);
         private double latitude;
         private double longitude;
-        public LocatorPage()
+        private string friendUsername;
+        public LocatorPage( string friend)
         {
             
             InitializeComponent();
             InitializePageDesign();
+            friendUsername = friend;
 
             MessagingCenter.Subscribe<Database.DBSupervisor>(this, "noInternet", (sender) =>
             {
@@ -38,35 +40,39 @@ namespace Mobile_Locator_App.Xaml
 
             // add the users current location to the map
             addPin(User.Username, userLatitude, userLongitude);
+            
             //if the user has selected a friend to find 
-            if(User.friendsToLocate.Count > 0)
+            if (friendUsername.Length > 0)
             {
                 // find all friendsToLocate locations and add them as pins to the map
-                for (int i = 0; i < User.friendsToLocate.Count; i++)
-                {
-                    if (Database.DBSupervisor.RedisDB.KeyExists(User.friendsToLocate[i] + "Longtitude") &&
-                        Database.DBSupervisor.RedisDB.KeyExists(User.friendsToLocate[i] + "Latitude"))
+                //for (int i = 0; i < User.friendsToLocate.Count; i++)
+                //{
+                    if (Database.DBSupervisor.RedisDB.KeyExists(friendUsername + "Longtitude") &&
+                        Database.DBSupervisor.RedisDB.KeyExists(friendUsername + "Latitude"))
                     {
 
-                        double latitude = Convert.ToDouble(Database.DBSupervisor.RedisDB.StringGet(User.friendsToLocate[i] + "Latitude"));
-                        double longitude = Convert.ToDouble(Database.DBSupervisor.RedisDB.StringGet(User.friendsToLocate[i] + "Latitude"));
+                        double latitude = Convert.ToDouble(Database.DBSupervisor.RedisDB.StringGet(friendUsername + "Latitude"));
+                        double longitude = Convert.ToDouble(Database.DBSupervisor.RedisDB.StringGet(friendUsername + "Latitude"));
+                        addPin(friendUsername, latitude, longitude);
                     }
                     else
                     {
+                        DisplayAlert("Alert", "The user you are trying to find does not have any location data, please try another.", "OK");
                         return;
                     }
                     // after the friends have been put on the map clear the list
-                    User.friendsToLocate.Clear();
-                    addPin(User.friendsToLocate[i], latitude, longitude);
-                } // end for loop
+                    
+                    
+                //} // end for loop
 
 
 
             } // end if
-                
+
+            
         }
             
-        /// <summary>
+        /// <summary> 
         /// Check internet connectivity
         /// if not connected then wait 5 seconds for the  user to enable the internet
         /// before reloading the page and trying again
@@ -76,9 +82,10 @@ namespace Mobile_Locator_App.Xaml
 
             if (!User.CheckInternetConnection())
             {
+
                 DisplayAlert("No Internet Connection.", "The application cannot connect to the internet, please ensure that your device is connected to a valid network.", "OK");
                 System.Threading.Tasks.Task.Delay(5000);
-                Navigation.PushModalAsync(new LocatorPage());
+                Navigation.PushModalAsync(new LocatorPage(friendUsername));
             }
         }
 
@@ -87,8 +94,9 @@ namespace Mobile_Locator_App.Xaml
 
         public void InitMap()
         {
+            
             //FromCenterAndRadius is used to center the map on the given position
-            // in this case the users last known location
+            // in this case the users last known location 
             map = new Map(
             MapSpan.FromCenterAndRadius(
             new Position(userLatitude, userLongitude), Distance.FromMiles(0.3)))
@@ -104,7 +112,7 @@ namespace Mobile_Locator_App.Xaml
             // creating the area where the map will be placed on the page
             //var stack = new Grid { };
             var stack = MapSection;
-            stack.Children.Add(map);
+            stack.Children.Add(map); 
             
             //Content = stack;
 
@@ -124,6 +132,7 @@ namespace Mobile_Locator_App.Xaml
                 Position = position,
                 Label = Username
             };
+            User.friendsToLocate.Clear();
             map.Pins.Add(pin);
         }
 
@@ -131,12 +140,7 @@ namespace Mobile_Locator_App.Xaml
         void InitializePageDesign() // to set the elements on the Log in page to the colours set in the Constants Class
         {
             BackgroundColor = Constants.BackgroundColour;
-            /*************************** ******************/
-            //SHA1 Key:  38:F4:D1:37:DD:AC:5F:9A:50:52:11:8B:F4:1F:47:77:C8:46:A4:D2
-            // Google Maps API Key: AIzaSyA0NaUhV_6er4i0t0nz_XPf0dwAkrAXlg4
-            //                      AIzaSyA3e08LCuZ3Rb7_5DWIklwxN87jyu_4lxY
-            /**************** USE NEW PACKAGE NAME TO CREATE A NEW GOOGLE MAPS API KEY 
-             * HAD TO CHANGE THE OLD NAME BECAUSE THE PROGRAM CANT HANDLE CAPITAL LETTERS************************/
+
         }
 
 

@@ -121,8 +121,9 @@ namespace Mobile_Locator_App.Xaml
 
         private void Button_NavLocator_Clicked(object sender, EventArgs e)
         {
+            string username = "";
             ActorPrimus.stopActors();
-            Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.LocatorPage());
+            Navigation.PushModalAsync(new LocatorPage(username));
         }
 
 
@@ -133,8 +134,15 @@ namespace Mobile_Locator_App.Xaml
 
         private async void FriendListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            // ask for confirmation onclick on a username in the pending friends listview
-            
+            // ask for confirmation onclick on a username in the pending friends listview 
+
+            // if the user clicks no on the confirmation box this method triggers again automatically so  
+            // this if statement is necessary so that the application does not crash as if the selected item is null when this method runs 
+            // a exception error will occur
+            if(FriendListView.SelectedItem == null)
+            {
+                return;
+            }
             var answer = await DisplayAlert("Alert", "Are you sure you want to accept the friend request of " + FriendListView.SelectedItem.ToString(), "Yes", "No");
 
             // if yes was clicked
@@ -151,7 +159,8 @@ namespace Mobile_Locator_App.Xaml
             }
             else
             {
-                return;
+                FriendListView.SelectedItem = null;
+                
             }
         }
     }

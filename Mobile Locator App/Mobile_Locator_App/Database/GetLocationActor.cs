@@ -12,11 +12,13 @@ using Mobile_Locator_App.Droid;
 using System.Linq;
 using Xamarin.Forms;
 
+
 namespace Mobile_Locator_App.Code
 {
     [Activity(Label = "CurrentLocation", MainLauncher = true, Icon = "@drawable/icon")]
     public class GetLocationActor : UntypedActor
     {
+        
 
 
         private readonly IActorRef _getLocationActor;
@@ -26,15 +28,19 @@ namespace Mobile_Locator_App.Code
         public GetLocationActor(IActorRef getLocationActor, Context mContext)
         {
             Console.WriteLine("*******************************************GetLocationActor");
-            //_getLocationActor = getLocationActor;
+            Console.WriteLine("//////////////Actor getLocation: " + Self);
             if (!Code.User.CheckInternetConnection())
             {
                 throw new Exception();
             }
             getLocation GetLocation = new getLocation(mContext);
             GetLocation.findLocation();
+
+            
         }
 
+
+        
 
         protected override void OnReceive(object message)
         {
@@ -63,12 +69,16 @@ namespace Mobile_Locator_App.Code
         LocationManager locationManager;
         private readonly Context mContext;
         string locationProvider;
+        
+
+
         //public IntPtr Handle => throw new NotImplementedException();
 
 
 
         public getLocation(Context mContext)
         {
+            
             this.mContext = mContext;
             InitialiseLocationManager();
         }
@@ -124,8 +134,15 @@ namespace Mobile_Locator_App.Code
             }
             else
             {
-                Database.DBSupervisor.RedisDB.StringSet(User.Username + "Longtitude", longitude);
-                Database.DBSupervisor.RedisDB.StringSet(User.Username + "Latitude", latitude);
+                try
+                { 
+                    Database.DBSupervisor.RedisDB.StringSet(User.Username + "Longtitude", longitude);
+                    Database.DBSupervisor.RedisDB.StringSet(User.Username + "Latitude", latitude);
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine("********************* Location Exception" + e);
+                }
                 User.Latitude = latitude;
                 User.Longitude = longitude;
                 MessagingCenter.Send<getLocation, string[]>(this, "gotLocation", locationValues);

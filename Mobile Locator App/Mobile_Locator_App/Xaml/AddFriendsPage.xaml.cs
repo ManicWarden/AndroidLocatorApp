@@ -37,7 +37,9 @@ namespace Mobile_Locator_App.Xaml
         void InitializePageDesign() // to set the elements on the Log in page to the colours set in the Constants Class
         {
             BackgroundColor = Constants.BackgroundColour;
-
+            Label_Username.TextColor = Constants.MainTextColour;
+            Entry_Username.TextColor = Constants.MainTextColour;
+            Label_Description.TextColor = Constants.MainTextColour;
         }
 
         private void Button_NavHome_Clicked(object sender, EventArgs e)
@@ -57,8 +59,9 @@ namespace Mobile_Locator_App.Xaml
 
         private void Button_NavLocator_Clicked(object sender, EventArgs e)
         {
+            string username = "";
             ActorPrimus.stopActors();
-            Navigation.PushModalAsync(new LocatorPage());
+            Navigation.PushModalAsync(new LocatorPage(username));
             //NavigationCode.GoLocator();
         }
 
@@ -84,9 +87,22 @@ namespace Mobile_Locator_App.Xaml
                         {
                              if (checkFriend())
                              {
-                                 ActorPrimus.DBSupervisorActor.Tell(new DBSupervisor.AddFriendCommand(Entry_Username.Text, addFriendActor));
-                                 DisplayAlert("Success", Entry_Username.Text + " has been added as a friend", "OK");
-                                
+                                if (checkPendingList())
+                                {
+                                    DisplayAlert("Request Already Exists", "You currently have a friend request pending with " + Entry_Username.Text, "OK");
+                                    return;
+                                }
+                                else if(checkUserPendingList())
+                                {
+                                    DisplayAlert("Check Pending Requests",Entry_Username.Text + " has a pending friend request lodged with you, please check your pending " +
+                                        "friends requests.", "OK");
+                                    return;
+                                }
+                                else
+                                {
+                                    ActorPrimus.DBSupervisorActor.Tell(new DBSupervisor.AddFriendCommand(Entry_Username.Text, addFriendActor));
+                                    DisplayAlert("Request Made", "A friend request has been made to " + Entry_Username.Text, "OK");
+                                }
                              }
 
 
@@ -153,6 +169,58 @@ namespace Mobile_Locator_App.Xaml
             {
                 // otherwise return true so that a list can be created using the current users username + Friends
                 return true;
+            }
+        }
+
+        bool checkPendingList()
+        {
+            // will check the specified users pending list to see if the current user exists in it            
+            bool requestExists = false;
+            // if the username exists
+
+            if (DBSupervisor.RedisDB.KeyExists(Entry_Username.Text+"PendingFriends"))
+            {
+                var length = DBSupervisor.RedisDB.ListLength(Entry_Username.Text + "PendingFriends");
+                for (int i = 0; i < length; i++)
+                {
+                    var value = DBSupervisor.RedisDB.ListGetByIndex(Entry_Username.Text + "PendingFriends", i);
+                    if (User.Username == value.ToString())
+                    {
+                        // if the current user already has a request pending
+                        requestExists = true;
+                    }
+
+                }
+
+                return requestExists;
+            }
+
+            else
+            {
+                return requestExists;
+            }
+
+        }
+
+        bool checkUserPendingList()
+        {
+            // will check to see if a request from the specified user is already lodged with the current user 
+            bool requestExists = false;
+            if (DBSupervisor.RedisDB.KeyExists(User.Username + "PendingFriends"))
+            {
+                var length = DBSupervisor.RedisDB.ListLength(User.Username + "PendingFriends");
+                for (int i = 0; i < length; i++)
+                {
+                    var value = DBSupervisor.RedisDB.ListGetByIndex(User.Username + "PendingFriends", i);
+                    if (Entry_Username.Text == value.ToString());
+                    // if the requested user already has a request pending with the current user
+                    requestExists = true;
+                }
+                return requestExists;
+            }
+            else
+            {
+                return requestExists;
             }
         }
     }

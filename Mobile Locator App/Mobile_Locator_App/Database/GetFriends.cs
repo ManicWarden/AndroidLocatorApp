@@ -10,15 +10,16 @@ namespace Mobile_Locator_App.Database
 {
     // retrieve the list of currentUserIDFriends from redis server
     class GetFriends : UntypedActor
-    {
+    { 
         public const string StartCommand = "start";
         public const string ExitCommand = "exit";
         private readonly IActorRef _getFriendsActor;
-        private readonly string _password;
+        
         private List<string> Friends = new List<string>();
 
         public GetFriends(IActorRef getFriendsActor)
         {
+            Console.WriteLine("//////////////Actor getFriends: " + Self);
             _getFriendsActor = getFriendsActor;
 
             //List<string> Friends = new List<string>();
@@ -39,10 +40,10 @@ namespace Mobile_Locator_App.Database
             ///////////////////////////THIS IS WHERE IT BREAKS
             //HomePage home = new HomePage(); // THIS IS THE CAUSE
 
-            
+
             //Console.WriteLine("**********************************************************HomePage home = new HomePage");
-            
-            
+
+
             
             /*var aPending = db.StringGetAsync("a");
             var bPending = db.StringGetAsync("b");
@@ -52,20 +53,26 @@ namespace Mobile_Locator_App.Database
             // get list of friends usernames by using the 
             // key "currentUsername"Friends then sending said list to the 
             // display function
+            if (!Code.User.CheckInternetConnection())
+            {
+                throw new Exception();
+            }
             Console.WriteLine("**********************************************************RetrieveFriends After");
             if (DBSupervisor.RedisDB.KeyExists(User.Username + "Friends"))
             {
+
                 Console.WriteLine("**********************************************************DBSupervisor.RedisDB.KeyExists");
                 // get the list of friends
 
                 var length = DBSupervisor.RedisDB.ListLength(User.Username + "Friends");
                 for (int i = 0; i < length; i++)
                 {
+
                     Console.WriteLine("**********************************************************for");
                     var value = DBSupervisor.RedisDB.ListGetByIndex(User.Username + "Friends", i);
                     Friends.Add(value.ToString());
                 }
-                MessagingCenter.Send<GetFriends, List<string>>(this, "hasFriends", Friends);
+                MessagingCenter.Send/*<GetFriends, List<string>>*/(this, "hasFriends", Friends);
             }
             else
             {

@@ -27,16 +27,18 @@ namespace Mobile_Locator_App.Xaml
 
         }
 
-        void InitializePageDesign() // to set the elements on the Log in page to the colours set in the Constants Class
+        void InitializePageDesign() // to set the elements on the Log in page to the colours set in the Constants Class 
         {
             BackgroundColor = Constants.BackgroundColour;
             Label_Username.TextColor = Constants.MainTextColour;
             Label_Password.TextColor = Constants.MainTextColour;
+            Entry_Password.TextColor = Constants.MainTextColour;
+            Entry_Username.TextColor = Constants.MainTextColour;
             ActivitySpinner.IsVisible = false;
             LogInIcon.HeightRequest = Constants.LogInIconHeight;
 
             Entry_Username.Completed += (s, e) => Entry_Password.Focus(); // when the user has filled in the username and the user has hit the done button on the keyboard the focus will be set to the password textbox
-            Entry_Password.Completed += (s, e) => UserLogIn(s, e); // when the password has been filled in and the user has hit the done button on the keyboard the UserLogIn function will run
+            
         }
 
         void UserLogIn(object sender, EventArgs e) // when the user clicks the log in button
@@ -59,9 +61,11 @@ namespace Mobile_Locator_App.Xaml
             {
                 if (checkUsername())
                 {
+                    ActivitySpinner.IsVisible = true;
                     User user = new User(Entry_Username.Text, Entry_Password.Text);
                     DisplayAlert("Login", "Login Succeeded", "OK");// First is label, second is text, third is button
                                                                    // move user to the home page
+                    
                     Navigation.PushModalAsync(new Mobile_Locator_App.Xaml.HomePage());
                 }
 

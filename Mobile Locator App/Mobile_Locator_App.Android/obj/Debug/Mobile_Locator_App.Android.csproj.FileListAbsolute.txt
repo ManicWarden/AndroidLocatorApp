@@ -1,3 +1,24 @@
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Android.csprojResolveAssemblyReference.cache
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\Xamarin.GooglePlayServices.Basement.dll.stamp
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\Xamarin.GooglePlayServices.Tasks.dll.stamp
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\Xamarin.GooglePlayServices.Base.dll.stamp
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\Xamarin.GooglePlayServices.Maps.dll.stamp
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\proguard\dc663e480.txt
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\dc663e48.proguard.stamp
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\0757626b.proguard.stamp
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\2f4d086a.proguard.stamp
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\ea5c07c4.proguard.stamp
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Android.csproj.CoreCompileInputs.cache
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.MainPage.xaml.g.cs
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.App.xaml.g.cs
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.AddFriendsPage.xaml.g.cs
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.FriendsPage.xaml.g.cs
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.HomePage.xaml.g.cs
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.LocatorPage.xaml.g.cs
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.LogInPage.xaml.g.cs
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.Registration.xaml.g.cs
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.SettingsPage.xaml.g.cs
+E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.PendingFriendRequests.xaml.g.cs
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Mobile_Locator_App.Android.dll
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Mobile_Locator_App.Android.pdb
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\mobile_Locator_App_Akka.Android.apk
@@ -52,21 +73,6 @@ E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locat
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Xaml.pdb
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Xaml.xml
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Xamarin.Forms.Xaml.dll.mdb
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\Xamarin.GooglePlayServices.Basement.dll.stamp
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\Xamarin.GooglePlayServices.Tasks.dll.stamp
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\Xamarin.GooglePlayServices.Base.dll.stamp
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\XbdMerge\Xamarin.GooglePlayServices.Maps.dll.stamp
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Android.csproj.CoreCompileInputs.cache
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.MainPage.xaml.g.cs
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.App.xaml.g.cs
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.AddFriendsPage.xaml.g.cs
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.FriendsPage.xaml.g.cs
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.HomePage.xaml.g.cs
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.LocatorPage.xaml.g.cs
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.LogInPage.xaml.g.cs
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.Registration.xaml.g.cs
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.SettingsPage.xaml.g.cs
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Droid.Xaml.PendingFriendRequests.xaml.g.cs
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Android.dll
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Android.pdb
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\android\bin\mobile_Locator_App_Akka.Android.apk
@@ -82,9 +88,8 @@ E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locat
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\android\assets\Xamarin.Forms.Core.dll.mdb
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
-E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\obj\Debug\Mobile_Locator_App.Android.csprojResolveAssemblyReference.cache
-obj\Debug\linksrc\Mono.Android.pdb
 E:\University\Honours Project\Mobile Locator App\Mobile Locator App\Mobile_Locator_App.Android\bin\Debug\Mobile_Locator_App.Android.dll
+bin\Debug\Mono.Android.pdb
 bin\Debug\mscorlib.pdb
 bin\Debug\System.Core.pdb
 bin\Debug\System.pdb
@@ -102,6 +107,7 @@ obj\Debug\linksrc\FormsViewGroup.dll.mdb
 obj\Debug\linksrc\Xamarin.Forms.Core.dll.mdb
 obj\Debug\linksrc\Xamarin.Forms.Platform.Android.dll.mdb
 obj\Debug\linksrc\Xamarin.Forms.Xaml.dll.mdb
+obj\Debug\linksrc\Mono.Android.pdb
 obj\Debug\linksrc\mscorlib.pdb
 obj\Debug\linksrc\System.Core.pdb
 obj\Debug\linksrc\System.pdb

@@ -48,8 +48,9 @@ namespace Mobile_Locator_App.Xaml
 
         private void Button_NavLocator_Clicked(object sender, EventArgs e)
         {
+            string username = "";
             ActorPrimus.stopActors();
-            Navigation.PushModalAsync(new LocatorPage());
+            Navigation.PushModalAsync(new LocatorPage(""));
             //NavigationCode.GoLocator();
         }
 

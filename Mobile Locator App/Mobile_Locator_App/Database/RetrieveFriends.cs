@@ -24,8 +24,7 @@ namespace Mobile_Locator_App.Database
                 throw new Exception();
             }
             Console.WriteLine("**********************************************************RetrieveFriends***");
-            ///////////////////////////THIS IS WHERE IT BREAKS
-            //HomePage home = new HomePage(); // THIS IS THE CAUSE
+            
 
 
             //Console.WriteLine("**********************************************************HomePage home = new HomePage");
